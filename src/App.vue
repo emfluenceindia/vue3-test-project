@@ -2,7 +2,7 @@
   <InfoTrekHeader brand="Aim High" slogan="Mountain is calling" />
   <div id="container">
     <DestinationList heading="Destinations" @placedetail="showPlaceDetail" />
-    <DestinationDetail :place="selectedPlace" />
+    <DestinationDetail :place="places" />
   </div>
 </template>
 
@@ -15,7 +15,8 @@ export default {
   name: 'App',
   data() {
     return {
-      selectedPlace: '',
+      placeId: 0,
+      places: []
     }
   },
   components: {
@@ -24,8 +25,9 @@ export default {
     DestinationDetail
   },
   methods: {
-    showPlaceDetail(placeName) {
-      this.selectedPlace = placeName;
+    showPlaceDetail(item) {
+      this.places = item;
+      console.log(this.places);
     }
   },
 }
