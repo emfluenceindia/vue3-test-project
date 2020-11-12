@@ -3,16 +3,16 @@
     <InfoTrekHeader brand="Aim High" slogan="Mountain is calling" />
     <div id="container">
       <router-view></router-view>
-      <DestinationList heading="Destinations" @placedetail="showPlaceDetail" />
-      <DestinationDetail :place="places" />
+      <!-- <DestinationList heading="Destinations" @placedetail="showPlaceDetail" />
+      <DestinationDetail :place="places" /> -->
     </div>
   </div>
 </template>
 
 <script>
 import InfoTrekHeader from './components/InfoTrekHeader.vue';
-import DestinationList from './components/destination/DestinationList.vue';
-import DestinationDetail from './components/destination/DestinationDetail.vue';
+// import DestinationList from './components/destination/DestinationList.vue';
+// import DestinationDetail from './components/destination/DestinationDetail.vue';
 
 export default {  
   name: 'App',
@@ -24,14 +24,14 @@ export default {
   },
   components: {
     InfoTrekHeader,
-    DestinationList,
-    DestinationDetail
+    // DestinationList,
+    // DestinationDetail
   },
   methods: {
-    showPlaceDetail(item) {
+    /*showPlaceDetail(item) {
       this.places = item;
       console.log(this.places);
-    }
+    }*/
   },
 }
 </script>

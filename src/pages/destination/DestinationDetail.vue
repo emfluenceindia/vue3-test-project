@@ -1,5 +1,5 @@
 <template>
-    <div class="place-dtl">
+    <div v-if="place.id !== 0" class="place-dtl">
         <h3>{{place.name}}</h3>
         <div class="photo">
             <img :src="place.image" :alt="place.name" />

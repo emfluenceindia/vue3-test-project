@@ -1,25 +1,32 @@
 <template>
     <div class="places">
-        <h3><i class="fa fa-map-marker"></i>{{heading}}</h3>
+        <h3><i class="fa fa-map-marker"></i>Destinations</h3>
         <ul>
             <li v-for="place in places" :key="place.id">
                 <a @click.prevent="getPlace(place)" :title="place.name" :href="place.url">{{place.name}}<span>({{place.location}})</span></a>
             </li>
         </ul>
-    </div>    
+    </div>
+    <DestinationDetail :place="selectedPlace" />
 </template>
 
 <script>
+
+import DestinationDetail from './DestinationDetail.vue';
+
 export default {
     name: 'DestinationList',
+    components: {
+        DestinationDetail,
+    },
     props:{
         heading: {
-            type: String,
-            required: true,
+            type: String
         }
     },
     data() {
         return {
+            selectedPlace: { id: 0 },
             places: [
                 {
                     id: 1,
@@ -104,7 +111,8 @@ export default {
     },
     methods: {
         getPlace(item) {
-            this.$emit( 'placedetail', item );
+            this.selectedPlace = item;
+            //this.$emit( 'placedetail', item );
         }
     }
 }
