@@ -51,7 +51,7 @@ body {
 }
 
 #container {
-  width: 80%;
+  width: 95%;
   margin: 4rem auto;
   display: flex;
   flex-wrap: wrap;

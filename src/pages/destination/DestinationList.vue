@@ -40,6 +40,12 @@ export default {
                     best_visit: 'June to October',
                     url: 'https://infotrek.com/places/bagini-glacier',
                     image: 'https://girirajexpeditions.com/wp-content/uploads/2017/10/4827138488_0acd28c766_b-800x430.jpg',
+                    info: {
+                        itinerary: 'Coming soon',
+                        preparation: '',
+                        precaution: '',
+                        medicine: '',
+                    }
                 },
                 {
                     id: 2,
@@ -53,6 +59,12 @@ export default {
                     best_visit: 'May to January',
                     url: 'https://infotrek.com/places/pindari-glacier',
                     image: 'https://www.indiamike.com/files/images/35/32/09/bara-shigri-glacier.jpg',
+                    info: {
+                        itinerary: 'Coming soon',
+                        preparation: '',
+                        precaution: '',
+                        medicine: '',
+                    }
                 },
                 {
                     id: 3,
@@ -66,6 +78,12 @@ export default {
                     best_visit: 'June to October',
                     url: 'https://infotrek.com/places/borasu-pass',
                     image: 'https://www.himalayanhikers.in/wp-content/uploads/2019/10/Borasu-Pass-Trakers.jpg',
+                    info: {
+                        itinerary: 'Coming soon',
+                        preparation: '',
+                        precaution: '',
+                        medicine: '',
+                    }
                 },
                 {
                     id: 4,
@@ -79,6 +97,12 @@ export default {
                     best_visit: 'June to October',
                     url: 'https://infotrek.com/places/kishong-lake',
                     image: 'https://i.ytimg.com/vi/G5B3Z6mr1iE/maxresdefault.jpg',
+                    info: {
+                        itinerary: 'Coming soon',
+                        preparation: '',
+                        precaution: '',
+                        medicine: '',
+                    }
                 },
                 {
                     id: 5,
@@ -92,6 +116,12 @@ export default {
                     best_visit: 'May to October',
                     url: 'https://infotrek.com/places/deo-tibba-basecamp',
                     image: 'https://www.bikatadventures.com/images/Gallery/IMG1000X548/img-deo-tibba-base-camp-trek2037-Bikat-Adventures.jpg',
+                    info: {
+                        itinerary: 'Coming soon',
+                        preparation: '',
+                        precaution: '',
+                        medicine: '',
+                    }
                 },
                 {
                     id: 6,
@@ -105,6 +135,12 @@ export default {
                     best_visit: 'October to March',
                     url: 'https://infotrek.com/places/sandakphu',
                     image: 'https://indiahikes.com/wp-content/uploads/2016/05/Sandakphu-Sleeping-Buddha-Range-Indiahikes-1.jpg',
+                    info: {
+                        itinerary: 'Coming soon',
+                        preparation: '',
+                        precaution: '',
+                        medicine: '',
+                    }
                 }
             ]
         }
@@ -131,14 +167,14 @@ export default {
         font-size: 1rem;
         padding: 6px;
         text-transform: uppercase;
-        background: olivedrab;
+        background: rgb(17, 126, 192);
         color: white;
         box-sizing: border-box;
         width: 90%;
     }
     
     .places h3 i {
-        color: greenyellow;
+        color: gainsboro;
         margin-right: .5rem;
     }
 
@@ -157,9 +193,20 @@ export default {
         padding: .2rem 0;
     }
 
+    .places ul li:before {
+        font-family: "FontAwesome";
+        content: '\f1bb';
+        color: gray;
+        padding-right: .25rem;
+    }
+
     .places ul li a {
-        color: olivedrab;
+        color: rgb(17, 126, 192);
         text-decoration: none;
+    }
+
+    .places ul li a:hover {
+        color: black;
     }
 
     .places ul li a span {

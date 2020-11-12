@@ -1,12 +1,12 @@
 <template>
     <div>
-        <h1>Welcome to Aim High</h1>
+        <h1>Contact Aim High</h1>
     </div>
 </template>
 
 <script>
 export default {
-    name: 'Home'
+    name: 'Contact'
 }
 </script>
 
