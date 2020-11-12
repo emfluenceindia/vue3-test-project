@@ -23,6 +23,13 @@
             </ul>
         </div>
     </header>
+    <nav id="main">
+        <ul>
+            <li><router-link to="/">Home</router-link></li> 
+            <li><router-link to="/about">About</router-link></li> 
+            <li><router-link to="/destinations">Destinations</router-link></li> 
+        </ul>
+    </nav>
 </template>
 
 <script>
@@ -95,7 +102,7 @@ export default {
         flex-wrap: wrap;
         justify-content: space-between;
         width: 100%;
-        border-bottom: 4px solid yellowgreen;
+        border-bottom: 1px solid yellowgreen;
     }
 
     #logo {
@@ -177,6 +184,35 @@ export default {
         margin-left: 1rem;
         margin-right: .3rem;
     }
+
+    #main {
+        width: 100%;
+        background: olivedrab;
+        margin: 0 auto;
+        padding: 1rem;
+        box-sizing: border-box;
+    }
+
+    #main ul {
+        margin: 0 auto;
+        display: flex;
+        flex-wrap: wrap;
+        list-style: none;
+        justify-content: left;
+    }
+
+    #main ul li {
+        margin: 0 .5rem;
+    }
+
+    #main ul li a {
+        color: white;
+        text-transform: uppercase;
+        text-decoration: none;
+        font-size: .9rem;
+    }
+
+    
 
     /*#social ul li a.facebook {
         color: #4267B2;

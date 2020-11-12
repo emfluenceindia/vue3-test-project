@@ -1,8 +1,11 @@
 <template>
-  <InfoTrekHeader brand="Aim High" slogan="Mountain is calling" />
-  <div id="container">
-    <DestinationList heading="Destinations" @placedetail="showPlaceDetail" />
-    <DestinationDetail :place="places" />
+  <div>
+    <InfoTrekHeader brand="Aim High" slogan="Mountain is calling" />
+    <div id="container">
+      <router-view></router-view>
+      <DestinationList heading="Destinations" @placedetail="showPlaceDetail" />
+      <DestinationDetail :place="places" />
+    </div>
   </div>
 </template>
 
