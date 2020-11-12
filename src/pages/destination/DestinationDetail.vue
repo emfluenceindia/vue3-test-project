@@ -39,6 +39,13 @@
             <a href="/">Precautions</a>
             <a href="/">Medicines</a>
         </div>
+        <div class="comments">
+            <h3 v-if="place.comments.length > 0">Recent Comments</h3>
+            <div v-for="comment in place.comments" :key="comment.id" class="comment">
+                <span>{{comment.user.firstName}} wrote on {{comment.date}}</span>
+                <p>{{comment.content}}</p>
+            </div>
+        </div>
     </div>    
 </template>
 
@@ -149,6 +156,52 @@ export default {
     box-sizing: border-box;
     text-transform: uppercase;
     font-weight: normal;
+}
+
+.place-dtl .comments {
+    width: 100%;
+    margin: 2rem auto;
+    padding: 1rem;
+    box-sizing: border-box;
+}
+
+.place-dtl .comments h3 {
+    color: gray;
+    font-size: 1.3rem;
+    margin: 0 auto;
+}
+
+.place-dtl .comments h3:before {
+    content: '\f086';
+    font-family: 'FontAwesome';
+    color: rgb(17, 126, 192);
+    padding-right: .5rem;
+}
+
+.place-dtl .comments .comment {
+    border: 1px solid gainsboro;
+    padding: 1rem;
+    box-sizing: border-box;
+    border-radius: .5rem;
+    margin: .7rem auto;
+}
+
+.place-dtl .comments .comment span {
+    font-size: .8rem;
+    display: block;
+    color: gray;
+}
+
+.place-dtl .comments .comment span:before {
+    font-family: 'FontAwesome';
+    content: '\f007';
+    padding-right: .5rem;
+    color: rgb(17, 126, 192);
+}
+
+.place-dtl .comments .comment p {
+    margin: .5rem 0;
+    font-size: .9rem;
 }
 
 </style>

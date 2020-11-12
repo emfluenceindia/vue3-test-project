@@ -45,7 +45,59 @@ export default {
                         preparation: '',
                         precaution: '',
                         medicine: '',
-                    }
+                    },
+                    comments:[
+                        {
+                            id: 1,
+                            user: {
+                                id: 44,
+                                firstName: 'Subrara',
+                                lastName: 'Sarkar',
+                            },
+                            date: '2020-08-11',
+                            content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero. Sed cursus ante dapibus diam. Sed nisi. Nulla quis sem at nibh elementum imperdiet. Duis sagittis ipsum. Praesent mauris. Fusce nec tellus sed augue semper porta. Mauris massa. Vestibulum lacinia arcu eget nulla. Class aptent taciti sociosq.',
+                        },
+                        {
+                            id: 2,
+                            user: {
+                                id: 78,
+                                firstName: 'Sudipto',
+                                lastName: 'Roy',
+                            },
+                            date: '2020-08-11',
+                            content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero. Sed cursus ante dapibus diam. Sed nisi. Nulla quis sem at nibh elementum imperdiet. Duis sagittis ipsum. Praesent mauris. Fusce nec tellus sed augue semper porta. Mauris massa. Vestibulum lacinia arcu eget nulla. Class aptent taciti sociosq.',
+                        },
+                        {
+                            id: 3,
+                            user: {
+                                id: 4,
+                                firstName: 'Jaya',
+                                lastName: 'Sarkar',
+                            },
+                            date: '2020-08-11',
+                            content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero. Sed cursus ante dapibus diam. Sed nisi. Nulla quis sem at nibh elementum imperdiet. Duis sagittis ipsum. Praesent mauris. Fusce nec tellus sed augue semper porta. Mauris massa. Vestibulum lacinia arcu eget nulla. Class aptent taciti sociosq.',
+                        },
+                        {
+                            id: 4,
+                            user: {
+                                id: 21,
+                                firstName: 'Srijoni',
+                                lastName: 'Sarkar',
+                            },
+                            date: '2020-08-11',
+                            content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero. Sed cursus ante dapibus diam. Sed nisi. Nulla quis sem at nibh elementum imperdiet. Duis sagittis ipsum. Praesent mauris. Fusce nec tellus sed augue semper porta. Mauris massa. Vestibulum lacinia arcu eget nulla. Class aptent taciti sociosq.',
+                        },
+                        {
+                            id: 5,
+                            user: {
+                                id: 786,
+                                firstName: 'Shail Bala',
+                                lastName: 'Tripathy',
+                            },
+                            date: '2020-08-11',
+                            content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero. Sed cursus ante dapibus diam. Sed nisi. Nulla quis sem at nibh elementum imperdiet. Duis sagittis ipsum. Praesent mauris. Fusce nec tellus sed augue semper porta. Mauris massa. Vestibulum lacinia arcu eget nulla. Class aptent taciti sociosq.',
+                        }
+                    ],
                 },
                 {
                     id: 2,
@@ -64,7 +116,8 @@ export default {
                         preparation: '',
                         precaution: '',
                         medicine: '',
-                    }
+                    },
+                    comments:[]
                 },
                 {
                     id: 3,
@@ -83,7 +136,8 @@ export default {
                         preparation: '',
                         precaution: '',
                         medicine: '',
-                    }
+                    },
+                    comments:[]
                 },
                 {
                     id: 4,
@@ -102,7 +156,8 @@ export default {
                         preparation: '',
                         precaution: '',
                         medicine: '',
-                    }
+                    },
+                    comments:[]
                 },
                 {
                     id: 5,
@@ -121,7 +176,8 @@ export default {
                         preparation: '',
                         precaution: '',
                         medicine: '',
-                    }
+                    },
+                    comments:[]
                 },
                 {
                     id: 6,
@@ -140,7 +196,8 @@ export default {
                         preparation: '',
                         precaution: '',
                         medicine: '',
-                    }
+                    },
+                    comments:[]
                 }
             ]
         }
