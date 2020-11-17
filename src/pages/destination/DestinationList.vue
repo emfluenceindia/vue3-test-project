@@ -28,6 +28,7 @@ export default {
     },
     data() {
         return {
+            isLoaded: false,
             selectedPlace: { id: 0 },
             places: [
                 {
@@ -200,6 +201,26 @@ export default {
                         medicine: '',
                     },
                     comments:[]
+                },
+                {
+                    id: 7,
+                    name: 'Milam Glacier',
+                    description: 'Milam Glacier Trek is a gateway to explore the mystiques of Uttarakhand. Milam Glacier is one of the remotest yet accessible glaciers of Uttarakhand. Milam Glacier is the largest glacier of Kumaon covering an area of 37 square kilometers. The base camp for this 16km long glacier is at Munsiyari.',
+                    altitude_mtr: 3870,
+                    altitude_ft: 12700,
+                    difficulty: 'Easy to Moderate',
+                    location: 'Uttarakhand',
+                    popularity_index: 23.4,
+                    best_visit: 'May to October',
+                    url: 'https://infotrek.com/places/milam-glacier',
+                    image: 'https://static2.tripoto.com/media/filter/tst/img/256163/TripDocument/1536668746_1533887116_img_20180531_110402_hdr.jpg',
+                    info: {
+                        itinerary: 'Coming soon',
+                        preparation: '',
+                        precaution: '',
+                        medicine: '',
+                    },
+                    comments:[]
                 }
             ]
         }
@@ -209,7 +230,16 @@ export default {
             this.selectedPlace = item;
             //this.$emit( 'placedetail', item );
         }
-    }
+    },
+
+    /*beforeUpdate() {
+        this.isLoaded = false;
+    },
+
+    updated() {
+        this.isLoaded = true;
+        console.log("Updated");
+    }*/
 }
 </script>
 

@@ -1,5 +1,7 @@
 <template>
     <div v-if="place.id !== 0" class="place-dtl">
+        <!-- <div v-if="loadingIcon === false">Loading...</div>
+        <div v-else>Loaded</div> -->
         <h3>{{place.name}}</h3>
         <div class="photo">
             <img :src="place.image" :alt="place.name" />
@@ -62,7 +64,11 @@ export default {
         place: {
             type: Object,
             required: true
-        }
+        },
+        /*loadingIcon: {
+            type: Boolean,
+            required: true
+        }*/
     },
     methods: {},
 
