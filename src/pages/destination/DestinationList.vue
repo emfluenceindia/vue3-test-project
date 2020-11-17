@@ -1,13 +1,15 @@
 <template>
-    <div class="places">
-        <h3><i class="fa fa-map-marker"></i>Destinations</h3>
-        <ul>
-            <li v-for="place in places" :key="place.id">
-                <a @click.prevent="getPlace(place)" :title="place.name" :href="place.url">{{place.name}}<span>({{place.location}})</span></a>
-            </li>
-        </ul>
+    <div class="flex w-full mx-10">
+        <div class="places">
+            <h3><i class="fa fa-map-marker"></i>Destinations</h3>
+            <ul>
+                <li v-for="place in places" :key="place.id">
+                    <a @click.prevent="getPlace(place)" :title="place.name" :href="place.url">{{place.name}}<span>({{place.location}})</span></a>
+                </li>
+            </ul>
+        </div>
+        <DestinationDetail :place="selectedPlace" />
     </div>
-    <DestinationDetail :place="selectedPlace" />
 </template>
 
 <script>
@@ -214,8 +216,9 @@ export default {
 <style scoped>
     .places {
         text-align: left;
-        width: 28%;
+        width: 25%;
         border-right: 1px solid gainsboro;
+        margin: 2rem 0;
     }
 
     .places h3 {

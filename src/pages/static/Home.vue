@@ -1,5 +1,10 @@
 <template>
-    <div class="w-full">
+    <div>
+        <section class="slider relative">
+            <Slider />
+        </section>
+    </div>
+    <div class="w-11/12 m-auto">
         <section>
             <h2 class="text-2xl p-2">Recently Added</h2>
             <div class="flex flex-wrap mb-4 m-auto">
@@ -12,7 +17,10 @@
 </template>
 
 <script>
+import Slider from './Slider.vue';
+
 export default {
+  components: { Slider },
     name: 'Home',
     data() {
         return {

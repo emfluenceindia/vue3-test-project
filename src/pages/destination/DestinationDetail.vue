@@ -98,7 +98,7 @@ export default {
 <style scoped>
 .place-dtl {
     width: 70%;
-    margin: 0 auto;
+    margin: 2rem auto;
     text-align: left;
 }
 

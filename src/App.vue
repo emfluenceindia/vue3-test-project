@@ -40,7 +40,7 @@ export default {
 body {
   margin: 0;
   padding: 0;
-  width: 100;
+  width: 100%;
   font-family: 'Lato', sans-serif;
 }
 #app {
@@ -51,10 +51,11 @@ body {
 }
 
 #container {
-  width: 95%;
-  margin: 4rem auto;
+  width: 100%;
+  margin: 0 auto;
   display: flex;
   flex-wrap: wrap;
   justify-content: left;
+  overflow-x: hidden;
 }
 </style>
