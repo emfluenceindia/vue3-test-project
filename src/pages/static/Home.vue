@@ -21,10 +21,10 @@ import Slider from '../../components/Slider.vue';
 
 export default {
   components: { Slider },
-    name: 'Home',
-    data() {
-        return {
-            images: [
+  name: 'Home',
+  data() {
+      return {
+          images: [
                 {
                     id: 1,
                     url: 'https://emfluenceindia.sirv.com/Sandakphu/1.jpg?thumbnail=200'
@@ -73,9 +73,9 @@ export default {
                     id: 12,
                     url: 'https://emfluenceindia.sirv.com/Sandakphu/12.jpg?thumbnail=200'
                 },
-            ]
-        }
-    }
+          ]
+      }
+  }
 }
 </script>
 
