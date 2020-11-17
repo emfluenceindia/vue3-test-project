@@ -64,7 +64,34 @@ export default {
             required: true
         }
     },
-    methods: {}
+    methods: {},
+
+    beforeCreated() {
+
+    },
+    created() {
+
+    },
+    beforeMount() {
+
+    },
+    mounted() {
+
+    },
+    beforeUpdate() {
+
+    },
+    updated() {
+
+    },
+    beforeUnmount() {
+        if( this.place ) {
+            alert('You are navigating away from ' + this.place.name);
+        }
+    },
+    unmounted() {
+
+    }
 }
 </script>
 

@@ -25,10 +25,9 @@
     </header>
     <nav id="main">
         <ul>
-            <li><router-link to="/">Home</router-link></li>
-            <li><router-link to="/destinations">Destinations</router-link></li>
-            <li><router-link to="/about">About</router-link></li>
-            <li><router-link to="/contact">Contact</router-link></li>
+            <li v-for="menuItem in menuItems" :key="menuItem.id">
+                <router-link :to="menuItem.link">{{menuItem.title}}</router-link>
+            </li>
         </ul>
     </nav>
 </template>
@@ -76,6 +75,34 @@ export default {
                     lower_name: 'linkedin',
                     icon: 'fa fa-linkedin-square',
                     url: 'https://linkedin.com',
+                }
+            ],
+
+            menuItems: [
+                {
+                    id: 1,
+                    title: 'Home',
+                    link: '/'
+                },
+                {
+                    id: 2,
+                    title: 'Destinations',
+                    link: '/destinations'
+                },
+                {
+                    id: 3,
+                    title: 'Stories',
+                    link: '/stories'
+                },
+                {
+                    id: 4,
+                    title: 'About',
+                    link: '/about'
+                },
+                {
+                    id: 5,
+                    title: 'Contact',
+                    link: '/contact'
                 }
             ],
 
