@@ -43,7 +43,8 @@ export default {
     },
     data() {
         return {
-            //isOpened: this.show,
+            isLoggedIn: false,
+            userEmail: '',
             loginData: {
                 loginEmail: '',
                 loginPassword: ''
@@ -58,8 +59,10 @@ export default {
         submitLogin() {
             firebase.default.auth()
             .signInWithEmailAndPassword( this.loginData.loginEmail, this.loginData.loginPassword )
-            .then( user => {
-                console.log( user );
+            .then( response => {
+                this.userEmail = response.user.email;
+                this.isLoggedIn = true;
+                
                 this.showLoginModal(false);
             })
             .catch( error => {
