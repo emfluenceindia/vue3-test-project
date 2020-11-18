@@ -6,11 +6,13 @@
       <!-- <DestinationList heading="Destinations" @placedetail="showPlaceDetail" />
       <DestinationDetail :place="places" /> -->
     </div>
+    <LoginModal @openmodal="openLoginModal" />
   </div>
 </template>
 
 <script>
 import InfoTrekHeader from './components/InfoTrekHeader.vue';
+import LoginModal from './components/LoginModal.vue';
 // import DestinationList from './components/destination/DestinationList.vue';
 // import DestinationDetail from './components/destination/DestinationDetail.vue';
 
@@ -24,6 +26,7 @@ export default {
   },
   components: {
     InfoTrekHeader,
+    LoginModal,
     // DestinationList,
     // DestinationDetail
   },
@@ -32,6 +35,10 @@ export default {
       this.places = item;
       console.log(this.places);
     }*/
+
+    openLoginModal(value) {
+      console.log(value);
+    }
   },
 }
 </script>

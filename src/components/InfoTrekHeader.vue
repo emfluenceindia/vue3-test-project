@@ -28,6 +28,7 @@
             <li v-for="menuItem in menuItems" :key="menuItem.id">
                 <router-link :to="menuItem.link">{{menuItem.title}}</router-link>
             </li>
+            <li><a @click="openModal(showModal)">Login</a></li>
         </ul>
     </nav>
 </template>
@@ -107,6 +108,7 @@ export default {
             ],
 
             isLoggedIn: true,
+            showModal: true,
 
             user: {
                 id: 1,
@@ -117,6 +119,12 @@ export default {
             }
         }
     },
+
+    methods: {
+        openModal(value) {
+            this.$emit( 'openmodal', value );
+        }
+    }
 }
 </script>
 
