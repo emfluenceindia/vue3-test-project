@@ -40,7 +40,7 @@ export default {
     },
     data() {
         return {
-            isOpened: this.show,
+            //isOpened: this.show,
             loginData: {
                 loginEmail: '',
                 loginPassword: ''
