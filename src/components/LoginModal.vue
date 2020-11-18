@@ -43,8 +43,10 @@ export default {
     },
     data() {
         return {
-            isLoggedIn: false,
-            userEmail: '',
+            loginState: {
+                isLoggedIn: false,
+                userEmail: '',
+            },
             loginData: {
                 loginEmail: '',
                 loginPassword: ''
@@ -60,8 +62,8 @@ export default {
             firebase.default.auth()
             .signInWithEmailAndPassword( this.loginData.loginEmail, this.loginData.loginPassword )
             .then( response => {
-                this.userEmail = response.user.email;
-                this.isLoggedIn = true;
+                this.loginState.userEmail = response.user.email;
+                this.loginState.isLoggedIn = true;
                 
                 this.showLoginModal(false);
             })
@@ -70,6 +72,8 @@ export default {
                 //var errorMessage = error.message;
                 console.log( error );
             });
+
+            this.$emit( 'updateheader', this.loginState );
         }
     }
 }

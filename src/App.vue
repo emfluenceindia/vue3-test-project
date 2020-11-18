@@ -1,12 +1,12 @@
 <template>
   <div>
-    <InfoTrekHeader brand="Aim High" slogan="Mountain is calling" @openmodal="openLoginModal" />
+    <InfoTrekHeader brand="Aim High" slogan="Mountain is calling" :updateHeader="loginState" @openmodal="openLoginModal" />
     <div id="container">
       <router-view></router-view>
       <!-- <DestinationList heading="Destinations" @placedetail="showPlaceDetail" />
       <DestinationDetail :place="places" /> -->
     </div>
-    <LoginModal :show="show" @hidemodal="hideLoginModal" />
+    <LoginModal :show="show" @hidemodal="hideLoginModal" @updateheader="updateHeader" />
   </div>
 </template>
 
@@ -23,6 +23,7 @@ export default {
       placeId: 0,
       places: [],
       show: false,
+      loginState: {}
     }
   },
   components: {
@@ -45,6 +46,11 @@ export default {
     hideLoginModal(value) {
       this.show = value;
       //console.log(this.show);
+    },
+
+    updateHeader(loginStatus) {
+      this.loginState = loginStatus;
+      console.log( loginStatus );
     }
   },
 }

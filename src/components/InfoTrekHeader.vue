@@ -44,6 +44,10 @@ export default {
         slogan: {
             type: String,
             required: false
+        },
+        loginState: {
+            type: Object,
+            require: true
         }
     },
     data() {
