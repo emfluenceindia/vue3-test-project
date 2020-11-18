@@ -30,6 +30,9 @@
 </template>
 
 <script>
+
+import firebase from '../utilities/firebase';
+
 export default {
     name: 'LoginModal',
     props: {
@@ -53,7 +56,17 @@ export default {
         },
 
         submitLogin() {
-            console.log(this.loginData);
+            firebase.default.auth()
+            .signInWithEmailAndPassword( this.loginData.loginEmail, this.loginData.loginPassword )
+            .then( user => {
+                console.log( user );
+                this.showLoginModal(false);
+            })
+            .catch( error => {
+                //var errorCode = error.code;
+                //var errorMessage = error.message;
+                console.log( error );
+            });
         }
     }
 }
