@@ -1,6 +1,6 @@
 <template>
   <div>
-    <InfoTrekHeader brand="Aim High" slogan="Mountain is calling" :updateHeader="loginState" @openmodal="openLoginModal" />
+    <InfoTrekHeader brand="Aim High" slogan="Mountain is calling" :loginState="loginState" @openmodal="openLoginModal" />
     <div id="container">
       <router-view></router-view>
       <!-- <DestinationList heading="Destinations" @placedetail="showPlaceDetail" />
