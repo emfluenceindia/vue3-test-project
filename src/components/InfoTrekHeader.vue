@@ -28,7 +28,7 @@
             <li v-for="menuItem in menuItems" :key="menuItem.id">
                 <router-link :to="menuItem.link">{{menuItem.title}}</router-link>
             </li>
-            <li><a @click="openModal(showModal)">Login</a></li>
+            <li><a class="cursor-pointer" @click="openModal(showModal)">Login</a></li>
         </ul>
     </nav>
 </template>
