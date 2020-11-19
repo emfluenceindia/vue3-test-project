@@ -10,19 +10,19 @@
                             <div class="w-11/12 m-auto">
                                 <div class="w-full text-left mt-5">
                                     <label class="block w-full text-sm font-medium" for="txtRegisterEmail">Email</label>
-                                    <input type="email" id="txtRegisterEmail" required maxlength="75" class="border border-l-0 border-r-0 border-t-0 border-gray-300 w-full outline-none" />
+                                    <input v-model="userData.registerEmail" type="email" id="txtRegisterEmail" required maxlength="75" class="border border-l-0 border-r-0 border-t-0 border-gray-300 w-full outline-none" />
                                 </div>
                                 <div class="w-full text-left mt-3 mb-2">
                                     <label class="block w-full text-sm font-medium" for="txtRegisterPassword">Password</label>
-                                    <input type="password" id="txtRegisterPassword" required maxlength="30" pattern="[0-9\s]+" class="border border-l-0 border-r-0 border-t-0 border-gray-300 w-full outline-none" />
+                                    <input v-model="userData.registerPassword" type="password" id="txtRegisterPassword" required maxlength="30" pattern="[0-9\s]+" class="border border-l-0 border-r-0 border-t-0 border-gray-300 w-full outline-none" />
                                 </div>
                                 <div class="w-full text-left mt-3 mb-2">
                                     <label class="block w-full text-sm font-medium" for="txtRegisterFullName">Full Name</label>
-                                    <input type="text" id="txtRegisterFullName" required maxlength="50" pattern="[A-Za-z\s]+" class="border border-l-0 border-r-0 border-t-0 border-gray-300 w-full outline-none" />
+                                    <input v-model="userData.registerFullName" type="text" id="txtRegisterFullName" required maxlength="50" pattern="[A-Za-z\s]+" class="border border-l-0 border-r-0 border-t-0 border-gray-300 w-full outline-none" />
                                 </div>
                                 <div class="w-full text-left mt-3 mb-2">
                                     <label class="block w-full text-sm font-medium" for="txtRegisterPhone">Phone</label>
-                                    <input type="text" id="txtRegisterPhone" required maxlength="12" pattern="[0-9\s]+" class="border border-l-0 border-r-0 border-t-0 border-gray-300 w-full outline-none" />
+                                    <input v-model="userData.registerPhone" type="text" id="txtRegisterPhone" required maxlength="12" pattern="[0-9\s]+" class="border border-l-0 border-r-0 border-t-0 border-gray-300 w-full outline-none" />
                                 </div>
                             </div>
                             <div class="mt-5 pb-3">
@@ -38,6 +38,9 @@
 </template>
 
 <script>
+
+//import firebase from '../utilities/firebase';
+
 export default {
     name: 'RegisterModal',
     props: {
@@ -48,7 +51,13 @@ export default {
     },
     data() {
         return {
-
+            registerSuccess: false,
+            userData: {
+                registerEmail: '',
+                registerPassword: '',
+                registerFullName: '',
+                registerPhone: '',
+            }
         }
     },
     methods: {
@@ -57,7 +66,14 @@ export default {
         },
 
         submitRegister() {
+            //firebase.default.auth().createUserWithEmailAndPassword()
+            
+            this.userData.registerEmail = '';
+            this.userData.registerPassword = '';
+            this.userData.registerFullName = '';
+            this.userData.registerPhone = '';
 
+            this.showRegisterModal(false);
         }
     }
 }
