@@ -19,7 +19,7 @@
                             </div>
                             <div class="mt-5 pb-3">
                                 <button type="submit" class="bg-gradient-to-b from-green-500 to-green-700 rounded text-white py-1 px-3 text-xs antialiased tracking-wide uppercase mx-2 outline-none">submit</button>
-                                <button class="bg-gradient-to-b from-orange-500 to-orange-700 rounded text-white py-1 px-3 text-xs antialiased tracking-wide uppercase outline-none" @click="showLoginModal(false)">Cancel</button>
+                                <button class="bg-gradient-to-b from-orange-500 to-orange-700 rounded text-white py-1 px-3 text-xs antialiased tracking-wide uppercase outline-none" @click.prevent="showLoginModal(false)">Cancel</button>
                             </div>
                         </form>
                     </fieldset>

@@ -14,7 +14,10 @@
                 <div v-if="isAuthenticated">
                     Welcome back!<i class="fa fa-sign-out"></i> <a @click.prevent="signOut" href="/sign-out">Log Out</a>
                 </div>
-                <div v-else><i class="fa fa-sign-in"></i><a href="/sign-in" @click.prevent="openModal(showModal)">Sign In</a> <i class="fa fa-user-plus"></i><a href="/sign-up">Sign Up</a></div>
+                <div v-else>
+                    <i class="fa fa-sign-in"></i><a href="/sign-in" @click.prevent="openModal(showModal)">Sign In</a>
+                    <i class="fa fa-user-plus"></i><a href="/sign-up" @click.prevent="openRegisterModal(showModal)" >Sign Up</a>
+                </div>
             </div>
             <ul>
                 <li v-for="item in socialItems" :key="item.index">
@@ -116,6 +119,7 @@ export default {
 
             isLoggedIn: true,
             showModal: true,
+            //showRegisterModal: true,
 
             user: {
                 id: 1,
@@ -130,6 +134,10 @@ export default {
     methods: {
         openModal(value) {
             this.$emit( 'openmodal', value );
+        },
+
+        openRegisterModal(value) {
+            this.$emit( 'open-register-modal', value );
         },
 
         signOut() {

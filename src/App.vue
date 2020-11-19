@@ -7,12 +7,14 @@
       <DestinationDetail :place="places" /> -->
     </div>
     <LoginModal :show="show" @hidemodal="hideLoginModal" @updateheader="updateHeader" />
+    <RegisterModal :show="show" @open-register-modal="hideRegisterModal" />
   </div>
 </template>
 
 <script>
 import InfoTrekHeader from './components/InfoTrekHeader.vue';
 import LoginModal from './components/LoginModal.vue';
+import RegisterModal from './components/RegisterModal.vue';
 // import DestinationList from './components/destination/DestinationList.vue';
 // import DestinationDetail from './components/destination/DestinationDetail.vue';
 
@@ -30,6 +32,7 @@ export default {
   components: {
     InfoTrekHeader,
     LoginModal,
+    RegisterModal,
     // DestinationList,
     // DestinationDetail
   },
@@ -47,6 +50,10 @@ export default {
     hideLoginModal(value) {
       this.show = value;
       //console.log(this.show);
+    },
+
+    hideRegisterModal(value) {
+      this.show = value;
     },
 
     updateHeader(loginStatus) {
