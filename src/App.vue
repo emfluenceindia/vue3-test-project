@@ -1,13 +1,20 @@
 <template>
   <div>
-    <InfoTrekHeader brand="Aim High" slogan="Mountain is calling" :isAuthenticated="isUserLoggedIn"  @openmodal="openLoginModal" @signout="logOut" />
+    <InfoTrekHeader 
+      brand="Aim High" 
+      slogan="Mountain is calling" 
+      :isAuthenticated="isUserLoggedIn" 
+      @openmodal="openLoginModal"
+      @open-register-modal="hideRegisterModal"
+      @signout="logOut" 
+    />
     <div id="container">
       <router-view></router-view>
       <!-- <DestinationList heading="Destinations" @placedetail="showPlaceDetail" />
       <DestinationDetail :place="places" /> -->
     </div>
     <LoginModal :show="show" @hidemodal="hideLoginModal" @updateheader="updateHeader" />
-    <RegisterModal :show="show" @open-register-modal="hideRegisterModal" />
+    <RegisterModal :showPopup="showRegisterPopup" @open-register-popup="hideRegisterModal" />
   </div>
 </template>
 
@@ -25,6 +32,7 @@ export default {
       placeId: 0,
       places: [],
       show: false,
+      showRegisterPopup: false,
       loginState: {},
       isUserLoggedIn: false,
     }
@@ -53,7 +61,7 @@ export default {
     },
 
     hideRegisterModal(value) {
-      this.show = value;
+      this.showRegisterPopup = value;
     },
 
     updateHeader(loginStatus) {

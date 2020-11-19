@@ -16,7 +16,7 @@
                 </div>
                 <div v-else>
                     <i class="fa fa-sign-in"></i><a href="/sign-in" @click.prevent="openModal(showModal)">Sign In</a>
-                    <i class="fa fa-user-plus"></i><a href="/sign-up" @click.prevent="openRegisterModal(showModal)" >Sign Up</a>
+                    <i class="fa fa-user-plus"></i><a href="/sign-up" @click.prevent="openRegisterModal(showRegisterModal)" >Sign Up</a>
                 </div>
             </div>
             <ul>
@@ -119,7 +119,7 @@ export default {
 
             isLoggedIn: true,
             showModal: true,
-            //showRegisterModal: true,
+            showRegisterModal: true,
 
             user: {
                 id: 1,

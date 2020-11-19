@@ -1,5 +1,5 @@
 <template>
-    <section v-if="show">
+    <section v-if="showPopup">
         <section class="z-20 w-screen h-screen bg-gray-400 fixed top-0 opacity-75" @click="showRegisterModal(false)"></section>
         <div class="absolute inset-0">
             <div class="flex h-full">
@@ -41,7 +41,7 @@
 export default {
     name: 'RegisterModal',
     props: {
-        show: {
+        showPopup: {
             type: Boolean,
             required: true,
         }
@@ -53,7 +53,7 @@ export default {
     },
     methods: {
         showRegisterModal(value) {
-            this.$emit( 'open-register-modal', value );
+            this.$emit( 'open-register-popup', value );
         },
 
         submitRegister() {
