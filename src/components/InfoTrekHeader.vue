@@ -11,10 +11,10 @@
         </div>
         <div id="social">
             <div id="auth">
-                <div v-if="isLoggedIn">
-                    Welcome {{user.username}}<i class="fa fa-sign-out"></i> <a href="/sign-out">Log Out</a>
+                <div v-if="isAuthenticated">
+                    Welcome back!<i class="fa fa-sign-out"></i> <a @click.prevent="signOut" href="/sign-out">Log Out</a>
                 </div>
-                <div v-else><i class="fa fa-sign-in"></i><a href="/sign-in">Sign In</a> <i class="fa fa-user-plus"></i><a href="/sign-up">Sign Up</a></div>
+                <div v-else><i class="fa fa-sign-in"></i><a href="/sign-in" @click.prevent="openModal(showModal)">Sign In</a> <i class="fa fa-user-plus"></i><a href="/sign-up">Sign Up</a></div>
             </div>
             <ul>
                 <li v-for="item in socialItems" :key="item.index">
@@ -28,7 +28,10 @@
             <li v-for="menuItem in menuItems" :key="menuItem.id">
                 <router-link :to="menuItem.link">{{menuItem.title}}</router-link>
             </li>
-            <li><a class="cursor-pointer" @click="openModal(showModal)">Login</a></li>
+            <li>
+                <a v-if="isAuthenticated" @click.prevent="signOut" class="cursor-pointer">Logout</a>
+                <a v-else class="cursor-pointer" @click="openModal(showModal)">Login</a>
+            </li>
         </ul>
     </nav>
 </template>
@@ -45,9 +48,9 @@ export default {
             type: String,
             required: false
         },
-        loginState: {
-            type: Object,
-            require: true
+        isAuthenticated: {
+            type: Boolean,
+            required: true
         }
     },
     data() {
@@ -127,6 +130,10 @@ export default {
     methods: {
         openModal(value) {
             this.$emit( 'openmodal', value );
+        },
+
+        signOut() {
+            this.$emit( 'signout' );
         }
     }
 }

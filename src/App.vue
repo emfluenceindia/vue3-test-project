@@ -1,6 +1,6 @@
 <template>
   <div>
-    <InfoTrekHeader brand="Aim High" slogan="Mountain is calling" :loginState="loginState" @openmodal="openLoginModal" />
+    <InfoTrekHeader brand="Aim High" slogan="Mountain is calling" :isAuthenticated="isUserLoggedIn"  @openmodal="openLoginModal" @signout="logOut" />
     <div id="container">
       <router-view></router-view>
       <!-- <DestinationList heading="Destinations" @placedetail="showPlaceDetail" />
@@ -23,7 +23,8 @@ export default {
       placeId: 0,
       places: [],
       show: false,
-      loginState: {}
+      loginState: {},
+      isUserLoggedIn: false,
     }
   },
   components: {
@@ -49,8 +50,11 @@ export default {
     },
 
     updateHeader(loginStatus) {
-      this.loginState = loginStatus;
-      console.log( loginStatus );
+      this.isUserLoggedIn = loginStatus;
+    },
+
+    logOut() {
+      this.isUserLoggedIn = false;
     }
   },
 }

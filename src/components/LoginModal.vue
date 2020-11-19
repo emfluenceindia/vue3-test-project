@@ -43,6 +43,7 @@ export default {
     },
     data() {
         return {
+            loginSuccess: false,
             loginState: {
                 isLoggedIn: false,
                 userEmail: '',
@@ -62,18 +63,20 @@ export default {
             firebase.default.auth()
             .signInWithEmailAndPassword( this.loginData.loginEmail, this.loginData.loginPassword )
             .then( response => {
-                this.loginState.userEmail = response.user.email;
-                this.loginState.isLoggedIn = true;
-                
+                const user_email = response.user.email;
+                if( user_email !== '' ) { this.loginSuccess = true; }
+
+                this.loginData.loginEmail = '';
+                this.loginData.loginPassword = '';
+
                 this.showLoginModal(false);
+                this.$emit( 'updateheader', this.loginSuccess );
             })
             .catch( error => {
                 //var errorCode = error.code;
                 //var errorMessage = error.message;
                 console.log( error );
             });
-
-            this.$emit( 'updateheader', this.loginState );
         }
     }
 }
