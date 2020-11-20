@@ -22,6 +22,7 @@
 import InfoTrekHeader from './components/InfoTrekHeader.vue';
 import LoginModal from './components/LoginModal.vue';
 import RegisterModal from './components/RegisterModal.vue';
+import firebase from './utilities/firebase';
 // import DestinationList from './components/destination/DestinationList.vue';
 // import DestinationDetail from './components/destination/DestinationDetail.vue';
 
@@ -72,6 +73,16 @@ export default {
       this.isUserLoggedIn = false;
     }
   },
+  mounted() {
+    firebase.default.auth().onAuthStateChanged( user => {
+      if( user ) {
+        console.log( user );
+        this.updateHeader(true);
+      } else {
+        console.log('No user');
+      }
+    } );
+  }
 }
 </script>
 

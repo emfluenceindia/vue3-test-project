@@ -1,12 +1,15 @@
 <template>
     <div>
-        <h1>About Aim High</h1>
+        <h1 ref="pageTitle">About Aim High</h1>
     </div>
 </template>
 
 <script>
 export default {
-    name: 'About'
+    name: 'About',
+    mounted() {
+        console.log(this.$refs);
+    }
 }
 </script>
 

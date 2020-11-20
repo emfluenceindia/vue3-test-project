@@ -10,11 +10,11 @@
                             <div class="w-11/12 m-auto">
                                 <div class="w-full text-left mt-5">
                                     <label class="block w-full text-sm font-medium" for="txtLoginId">Email or Username</label>
-                                    <input v-model="loginData.loginEmail" type="text" id="txtLoginId" required maxlength="75" class="border border-l-0 border-r-0 border-t-0 border-gray-300 w-full outline-none" />
+                                    <input v-model="loginData.loginEmail" type="text" ref="loginInputRef" required maxlength="75" class="border border-l-0 border-r-0 border-t-0 border-gray-300 w-full outline-none" />
                                 </div>
                                 <div class="w-full text-left mt-3 mb-2">
                                     <label class="block w-full text-sm font-medium" for="txtLoginPassword">Password</label>
-                                    <input v-model="loginData.loginPassword" type="password" id="txtLoginPassword" required maxlength="30" class="border border-l-0 border-r-0 border-t-0 border-gray-300 w-full outline-none" />
+                                    <input v-model="loginData.loginPassword" type="password" ref="txtLoginPassword" id="txtLoginPassword" required maxlength="30" class="border border-l-0 border-r-0 border-t-0 border-gray-300 w-full outline-none" />
                                 </div>
                             </div>
                             <div class="mt-5 pb-3">
@@ -78,6 +78,6 @@ export default {
                 console.log( error );
             });
         }
-    }
+    },
 }
 </script>
