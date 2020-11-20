@@ -14,23 +14,23 @@
 
 <script>
 
+/**
+ * Integrating Compositon API for the first time
+ */
+import { ref } from'vue';
 import DestinationDetail from './DestinationDetail.vue';
 
 export default {
-    name: 'DestinationList',
-    components: {
-        DestinationDetail,
-    },
-    props:{
-        heading: {
-            type: String
-        }
-    },
-    data() {
-        return {
-            isLoaded: false,
-            selectedPlace: { id: 0 },
-            places: [
+    
+    /**
+     * Composition API Setup method starts
+     */
+
+    setup() {
+        const isLoaded = ref( Boolean );
+        const selectedPlace = ref( {id: 0} );
+        const places = ref(
+            [
                 {
                     id: 1,
                     name: 'Bagini Glacier',
@@ -223,6 +223,39 @@ export default {
                     comments:[]
                 }
             ]
+        );
+
+        const getPlace = (item => {
+            selectedPlace.value = item;
+        });
+
+        return {
+            isLoaded,
+            selectedPlace,
+            places,
+            getPlace
+        }
+    },
+
+    /* setup() method ends */
+
+    name: 'DestinationList',
+    components: {
+        DestinationDetail,
+    },
+    props:{
+        heading: {
+            type: String
+        }
+    },
+    /*
+    data() {
+        return {
+            isLoaded: false,
+            selectedPlace: { id: 0 },
+            places: [
+                { status: 'Moved inside composition API setup method' }
+            ]
         }
     },
     methods: {
@@ -232,7 +265,7 @@ export default {
         }
     },
 
-    /*beforeUpdate() {
+    beforeUpdate() {
         this.isLoaded = false;
     },
 
