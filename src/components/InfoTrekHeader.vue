@@ -12,7 +12,7 @@
         <div id="social">
             <div id="auth">
                 <div v-if="isAuthenticated">
-                    Welcome back!<i class="fa fa-sign-out"></i> <a @click.prevent="signOut" href="/sign-out">Log Out</a>
+                    Welcome {{userDisplayName}}!<i class="fa fa-sign-out"></i> <a @click.prevent="signOut" href="/sign-out">Log Out</a>
                 </div>
                 <div v-else>
                     <i class="fa fa-sign-in"></i><a href="/sign-in" @click.prevent="openModal(showModal)">Sign In</a>
@@ -53,6 +53,10 @@ export default {
         },
         isAuthenticated: {
             type: Boolean,
+            required: true
+        },
+        userDisplayName: {
+            type: String,
             required: true
         }
     },

@@ -4,6 +4,7 @@
       brand="Aim High" 
       slogan="Mountain is calling" 
       :isAuthenticated="isUserLoggedIn" 
+      :userDisplayName="authUserDisplayName"
       @openmodal="openLoginModal"
       @open-register-modal="hideRegisterModal"
       @signout="logOut" 
@@ -36,6 +37,7 @@ export default {
       showRegisterPopup: false,
       loginState: {},
       isUserLoggedIn: false,
+      authUserDisplayName: '',
     }
   },
   components: {
@@ -75,11 +77,12 @@ export default {
         this.isUserLoggedIn = false;
       } )
       .catch( error => { console.log( error ); } );
-    }
+    },
   },
   mounted() {
     firebase.default.auth().onAuthStateChanged( user => {
       if( user ) {
+        this.authUserDisplayName = user.email.split( '@' )[0];
         this.updateHeader(true);
       } else {
         this.updateHeader(false);
