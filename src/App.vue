@@ -4,7 +4,7 @@
       brand="Aim High" 
       slogan="Mountain is calling" 
       :isAuthenticated="isUserLoggedIn" 
-      :userDisplayName="authUserDisplayName"
+      :userDisplayName="userDisplayName"
       @openmodal="openLoginModal"
       @open-register-modal="hideRegisterModal"
       @signout="logOut" 
@@ -27,7 +27,7 @@ import firebase from './utilities/firebase';
 // import DestinationList from './components/destination/DestinationList.vue';
 // import DestinationDetail from './components/destination/DestinationDetail.vue';
 
-import { onMounted, ref } from 'vue';
+import { computed, onMounted, ref } from 'vue';
 
 export default {
   name: 'App',
@@ -67,10 +67,18 @@ export default {
       .catch( error => { console.log( error ); } );
     });
 
+    // Computed property (getter and setter)
+    const userDisplayName = computed({
+      get: () => authUserDisplayName.value.split( '@' )[0],
+      set: val => {
+        authUserDisplayName.value = val;
+      }
+    });
+
     onMounted(() => {
       firebase.default.auth().onAuthStateChanged( user => {
         if( user ) {
-          authUserDisplayName.value = user.email.split( '@' )[0];
+          userDisplayName.value = user.email;
           updateHeader(true);
         } else {
           updateHeader(false);
@@ -92,7 +100,8 @@ export default {
       hideLoginModal,
       hideRegisterModal,
       updateHeader,
-      logOut
+      logOut,
+      userDisplayName
     }
 
   },
