@@ -70,16 +70,20 @@ export default {
     },
 
     logOut() {
-      this.isUserLoggedIn = false;
+      firebase.default.auth().signOut()
+      .then( () => {
+        this.isUserLoggedIn = false;
+      } )
+      .catch( error => { console.log( error ); } );
     }
   },
   mounted() {
     firebase.default.auth().onAuthStateChanged( user => {
       if( user ) {
-        console.log( user );
         this.updateHeader(true);
       } else {
-        console.log('No user');
+        this.updateHeader(false);
+        // Do something. maybe open the login popup
       }
     } );
   }
