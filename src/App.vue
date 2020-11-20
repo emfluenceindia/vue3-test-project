@@ -40,7 +40,7 @@ export default {
     const showRegisterPopup = ref(false);
     const loginState = ref({});
     const isUserLoggedIn = ref(false);
-    const authUserDisplayName = ref('');
+    const authUserEmail = ref('');
 
     // functions
     const openLoginModal = (newValue => {
@@ -69,9 +69,9 @@ export default {
 
     // Computed property (getter and setter)
     const userDisplayName = computed({
-      get: () => authUserDisplayName.value.split( '@' )[0],
+      get: () => authUserEmail.value.split( '@' )[0],
       set: val => {
-        authUserDisplayName.value = val;
+        authUserEmail.value = val;
       }
     });
 
@@ -94,7 +94,7 @@ export default {
       showRegisterPopup,
       loginState,
       isUserLoggedIn,
-      authUserDisplayName,
+      authUserEmail,
 
       openLoginModal,
       hideLoginModal,
@@ -107,6 +107,14 @@ export default {
   },
   // Ends setup() method
 
+  components: {
+    InfoTrekHeader,
+    LoginModal,
+    RegisterModal,
+    // DestinationList,
+    // DestinationDetail
+  },
+
   /*data() {
     return {
       placeId: 0,
@@ -117,15 +125,8 @@ export default {
       isUserLoggedIn: false,
       authUserDisplayName: '',
     }
-  },*/
-  components: {
-    InfoTrekHeader,
-    LoginModal,
-    RegisterModal,
-    // DestinationList,
-    // DestinationDetail
   },
-  /*
+
   methods: {
     showPlaceDetail(item) {
       this.places = item;
