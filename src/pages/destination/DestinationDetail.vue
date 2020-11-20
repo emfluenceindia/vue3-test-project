@@ -91,9 +91,9 @@ export default {
 
     },
     beforeUnmount() {
-        if( this.place ) {
+        /*if( this.place ) {
             alert('You are navigating away from ' + this.place.name);
-        }
+        }*/
     },
     unmounted() {
 
