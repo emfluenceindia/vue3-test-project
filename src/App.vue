@@ -27,9 +27,78 @@ import firebase from './utilities/firebase';
 // import DestinationList from './components/destination/DestinationList.vue';
 // import DestinationDetail from './components/destination/DestinationDetail.vue';
 
-export default {  
+import { onMounted, ref } from 'vue';
+
+export default {
   name: 'App',
-  data() {
+
+  // Start setup() method
+  setup() {
+    const placeId = ref(0);
+    const places = ref([]);
+    const show = ref(false);
+    const showRegisterPopup = ref(false);
+    const loginState = ref({});
+    const isUserLoggedIn = ref(false);
+    const authUserDisplayName = ref('');
+
+    // functions
+    const openLoginModal = (newValue => {
+      show.value = newValue;
+    });
+
+    const hideLoginModal = (newValue => {
+      show.value = newValue;
+    });
+
+    const hideRegisterModal = (newValue => {
+      showRegisterPopup.value = newValue;
+    });
+
+    const updateHeader = (loginStatus => {
+      isUserLoggedIn.value = loginStatus;
+    });
+
+    const logOut = ( () => {
+      firebase.default.auth().signOut()
+      .then( () => {
+        isUserLoggedIn.value = false;
+      } )
+      .catch( error => { console.log( error ); } );
+    });
+
+    onMounted(() => {
+      firebase.default.auth().onAuthStateChanged( user => {
+        if( user ) {
+          authUserDisplayName.value = user.email.split( '@' )[0];
+          updateHeader(true);
+        } else {
+          updateHeader(false);
+          // Do something. maybe open the login popup
+        }
+      });
+    });
+
+    return {
+      placeId,
+      places,
+      show,
+      showRegisterPopup,
+      loginState,
+      isUserLoggedIn,
+      authUserDisplayName,
+
+      openLoginModal,
+      hideLoginModal,
+      hideRegisterModal,
+      updateHeader,
+      logOut
+    }
+
+  },
+  // Ends setup() method
+
+  /*data() {
     return {
       placeId: 0,
       places: [],
@@ -39,7 +108,7 @@ export default {
       isUserLoggedIn: false,
       authUserDisplayName: '',
     }
-  },
+  },*/
   components: {
     InfoTrekHeader,
     LoginModal,
@@ -47,11 +116,12 @@ export default {
     // DestinationList,
     // DestinationDetail
   },
+  /*
   methods: {
-    /*showPlaceDetail(item) {
+    showPlaceDetail(item) {
       this.places = item;
       console.log(this.places);
-    }*/
+    }
 
     openLoginModal(value) {
       this.show = value;
@@ -78,7 +148,9 @@ export default {
       } )
       .catch( error => { console.log( error ); } );
     },
+    
   },
+  
   mounted() {
     firebase.default.auth().onAuthStateChanged( user => {
       if( user ) {
@@ -90,6 +162,7 @@ export default {
       }
     } );
   }
+  */
 }
 </script>
 
