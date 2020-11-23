@@ -18,9 +18,12 @@
                                 </div>
                             </div>
                             <div class="mt-5 pb-3">
-                                <Button behavior="submit" label="sign in" success="true" />
-                                <!-- <button type="submit" class="bg-gradient-to-b from-green-500 to-green-700 rounded text-white py-1 px-3 text-xs antialiased tracking-wide uppercase mx-2 outline-none">submit</button> -->
-                                <button class="bg-gradient-to-b from-orange-500 to-orange-700 rounded text-white py-1 px-3 text-xs antialiased tracking-wide uppercase outline-none" @click.prevent="showLoginModal(false)">Cancel</button>
+                                <Button behavior="submit" baseColor="green">
+                                    <span><i class="fa fa-sign-in" aria-hidden="true"></i>&nbsp;sign in</span>
+                                </Button>
+                                <Button behavior="submit" baseColor="orange" @click.prevent="showLoginModal(false)">
+                                    <span><i class="fa fa-ban" aria-hidden="true"></i>&nbsp;cancel</span>
+                                </Button>
                             </div>
                             <div class="mt-5 pb-3">
                                 <a href="" @click.prevent="closeLoginAndOpenRegister(false)">Create a free Account!</a>

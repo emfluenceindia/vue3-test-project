@@ -1,36 +1,32 @@
 <template>
-    <button>
-        <slot></slot>
+    <button :class="buttonStyle" :type="behavior">
+        <slot>submit</slot>
     </button>
-    <button type="behavior" v-if="success === 'true'" class="bg-gradient-to-b from-green-500 to-green-700 rounded text-white py-1 px-3 text-xs antialiased tracking-wide uppercase mx-2 outline-none">{{label}}</button>
-    <button type="behavior" v-else class="bg-gradient-to-b from-red-500 to-red-700 rounded text-white py-1 px-3 text-xs antialiased tracking-wide uppercase mx-2 outline-none">{{label}}</button>
 </template>
 
 <script>
 export default {
     name: 'Button',
     props: {
-        label: {
-            type: String,
-            required: true
-        },
-        leftIcon: {
-            type: String
-        },
-        rightIcon: {
-            type: String
-        },
         behavior: {
             type: String,
             required: true
         },
-        success: {
+        baseColor: {
             type: String,
-            required: true,
+            required: true
         }
     },
-    methods: {
 
+    computed: {
+        buttonStyle: function() {
+            const gradientBase = 'bg-gradient-to-b';
+            const fromColor = 'from-' + this.baseColor + '-500';
+            const toColor = 'to-' + this.baseColor + '-700';
+            const commonStyle = 'rounded text-white py-1 px-3 text-xs antialiased tracking-wide uppercase mx-2 outline-none';
+
+            return gradientBase + ' ' + fromColor + ' ' + toColor + ' ' + commonStyle;
+        }
     }
 }
 </script>
