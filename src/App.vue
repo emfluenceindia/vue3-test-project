@@ -14,7 +14,7 @@
       <!-- <DestinationList heading="Destinations" @placedetail="showPlaceDetail" />
       <DestinationDetail :place="places" /> -->
     </div>
-    <LoginModal :show="show" @hidemodal="hideLoginModal" @updateheader="updateHeader" />
+    <LoginModal :show="show" @hidemodal="hideLoginModal" @updateheader="updateHeader" @close-login-and-open-register="closeLoginAndOpenRegister" />
     <RegisterModal :showPopup="showRegisterPopup" @open-register-popup="hideRegisterModal" />
   </div>
 </template>
@@ -53,6 +53,11 @@ export default {
 
     const hideRegisterModal = (newValue => {
       showRegisterPopup.value = newValue;
+    });
+
+    const closeLoginAndOpenRegister = ( () => {
+      showRegisterPopup.value = true;
+      show.value = false;
     });
 
     const updateHeader = (loginStatus => {
@@ -101,7 +106,9 @@ export default {
       hideRegisterModal,
       updateHeader,
       logOut,
-      userDisplayName
+      userDisplayName,
+
+      closeLoginAndOpenRegister
     }
 
   },
