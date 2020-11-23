@@ -14,7 +14,7 @@
                                 </div>
                                 <div class="w-full text-left mt-3 mb-2">
                                     <label class="block w-full text-sm font-medium" for="txtRegisterPassword">Password</label>
-                                    <input v-model="userData.registerPassword" type="password" id="txtRegisterPassword" required maxlength="30" pattern="[0-9\s]+" class="border border-l-0 border-r-0 border-t-0 border-gray-300 w-full outline-none" />
+                                    <input v-model="userData.registerPassword" type="password" id="txtRegisterPassword" required maxlength="30" pattern="[A-Za-z_.0-9]+" class="border border-l-0 border-r-0 border-t-0 border-gray-300 w-full outline-none" />
                                 </div>
                                 <div class="w-full text-left mt-3 mb-2">
                                     <label class="block w-full text-sm font-medium" for="txtRegisterFullName">Full Name</label>
@@ -39,7 +39,7 @@
 
 <script>
 
-//import firebase from '../utilities/firebase';
+import firebase from '../utilities/firebase';
 
 export default {
     name: 'RegisterModal',
@@ -66,7 +66,14 @@ export default {
         },
 
         submitRegister() {
-            //firebase.default.auth().createUserWithEmailAndPassword()
+            firebase.default.auth().createUserWithEmailAndPassword(
+                this.userData.registerEmail,
+                this.userData.registerPassword
+            )
+            .then(user => {
+                console.log(user);
+            })
+            .catch(error => {console.log(error)});
             
             this.userData.registerEmail = '';
             this.userData.registerPassword = '';
