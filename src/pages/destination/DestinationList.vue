@@ -241,7 +241,7 @@ export default {
 
     name: 'DestinationList',
     components: {
-        DestinationDetail,
+        DestinationDetail
     },
     props:{
         heading: {
