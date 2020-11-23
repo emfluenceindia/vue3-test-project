@@ -18,7 +18,8 @@
                                 </div>
                             </div>
                             <div class="mt-5 pb-3">
-                                <button type="submit" class="bg-gradient-to-b from-green-500 to-green-700 rounded text-white py-1 px-3 text-xs antialiased tracking-wide uppercase mx-2 outline-none">submit</button>
+                                <Button behavior="submit" label="sign in" success="true" />
+                                <!-- <button type="submit" class="bg-gradient-to-b from-green-500 to-green-700 rounded text-white py-1 px-3 text-xs antialiased tracking-wide uppercase mx-2 outline-none">submit</button> -->
                                 <button class="bg-gradient-to-b from-orange-500 to-orange-700 rounded text-white py-1 px-3 text-xs antialiased tracking-wide uppercase outline-none" @click.prevent="showLoginModal(false)">Cancel</button>
                             </div>
                             <div class="mt-5 pb-3">
@@ -35,6 +36,7 @@
 <script>
 
 import firebase from '../utilities/firebase';
+import Button from './Button.vue';
 
 export default {
     name: 'LoginModal',
@@ -43,6 +45,9 @@ export default {
             type: Boolean,
             required: true
         }
+    },
+    components: {
+        Button
     },
     data() {
         return {
