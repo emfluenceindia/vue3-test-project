@@ -10,12 +10,13 @@
                             <div class="w-11/12 m-auto">
                                 <div class="w-full text-left mt-5">
                                     <label class="block w-full text-sm font-medium" for="txtRegisterEmail">Email</label>
-                                    <input v-model="userData.registerEmail" type="email" id="txtRegisterEmail" required maxlength="75" class="border border-l-0 border-r-0 border-t-0 border-gray-300 w-full outline-none" />
+                                    <input v-model="userEmail" type="email" id="txtRegisterEmail" required maxlength="75" class="border border-l-0 border-r-0 border-t-0 border-gray-300 w-full outline-none" />
                                 </div>
                                 <div class="w-full text-left mt-3 mb-2">
                                     <label class="block w-full text-sm font-medium" for="txtRegisterPassword">Password</label>
-                                    <input v-model="userData.registerPassword" type="password" id="txtRegisterPassword" required maxlength="30" pattern="[A-Za-z_.0-9]+" class="border border-l-0 border-r-0 border-t-0 border-gray-300 w-full outline-none" />
+                                    <input v-model="userPassword" type="password" id="txtRegisterPassword" required maxlength="30" pattern="[A-Za-z_.0-9]+" class="border border-l-0 border-r-0 border-t-0 border-gray-300 w-full outline-none" />
                                 </div>
+                                <!--
                                 <div class="w-full text-left mt-3 mb-2">
                                     <label class="block w-full text-sm font-medium" for="txtRegisterFullName">Full Name</label>
                                     <input v-model="userData.registerFullName" type="text" id="txtRegisterFullName" required maxlength="50" pattern="[A-Za-z\s]+" class="border border-l-0 border-r-0 border-t-0 border-gray-300 w-full outline-none" />
@@ -24,6 +25,7 @@
                                     <label class="block w-full text-sm font-medium" for="txtRegisterPhone">Phone</label>
                                     <input v-model="userData.registerPhone" type="text" id="txtRegisterPhone" required maxlength="12" pattern="[0-9\s]+" class="border border-l-0 border-r-0 border-t-0 border-gray-300 w-full outline-none" />
                                 </div>
+                                -->
                             </div>
                             <div class="mt-5 pb-3">
                                 <button type="submit" class="bg-gradient-to-b from-green-500 to-green-700 rounded text-white py-1 px-3 text-xs antialiased tracking-wide uppercase mx-2 outline-none">submit</button>
@@ -40,6 +42,7 @@
 <script>
 
 import firebase from '../utilities/firebase';
+import { ref } from 'vue';
 
 export default {
     name: 'RegisterModal',
@@ -49,40 +52,35 @@ export default {
             required: true,
         }
     },
-    data() {
+
+    
+    setup( props, { emit } ) {
+        const userEmail = ref('');
+        const userPassword = ref('');
+        
+        const submitRegister = () => {
+            firebase.default.auth().createUserWithEmailAndPassword( userEmail.value, userPassword.value )
+            .then( () => { 
+                userEmail.value = '';
+                userPassword.value = '';
+                showRegisterModal(false);
+            } )
+            .catch( err => {
+                console.log( err );
+            } )
+        };
+
+        const showRegisterModal = (value) => {
+            emit( 'open-register-popup', value );
+        }
+
         return {
-            registerSuccess: false,
-            userData: {
-                registerEmail: '',
-                registerPassword: '',
-                registerFullName: '',
-                registerPhone: '',
-            }
+            submitRegister,
+            showRegisterModal,
+            userEmail,
+            userPassword
         }
     },
-    methods: {
-        showRegisterModal(value) {
-            this.$emit( 'open-register-popup', value );
-        },
-
-        submitRegister() {
-            firebase.default.auth().createUserWithEmailAndPassword(
-                this.userData.registerEmail,
-                this.userData.registerPassword
-            )
-            .then(user => {
-                console.log(user);
-            })
-            .catch(error => {console.log(error)});
-            
-            this.userData.registerEmail = '';
-            this.userData.registerPassword = '';
-            this.userData.registerFullName = '';
-            this.userData.registerPhone = '';
-
-            this.showRegisterModal(false);
-        }
-    }
 }
 </script>
 
