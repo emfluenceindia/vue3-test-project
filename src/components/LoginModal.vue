@@ -19,9 +19,6 @@
                     <span><i class="fa fa-ban" aria-hidden="true"></i>&nbsp;cancel</span>
                 </Button>
             </div>
-            <div class="mt-5 pb-3">
-                <a href="" @click.prevent="closeLoginAndOpenRegister(false)">Create a free Account!</a>
-            </div>
         </form>
     </section>
 </template>
@@ -60,10 +57,6 @@ export default {
             this.$emit('hidemodal');
         },
 
-        closeLoginAndOpenRegister() {
-            this.$emit('close-login-and-open-register');
-        },
-
         submitLogin() {
             firebase.default.auth()
             .signInWithEmailAndPassword( this.loginData.loginEmail, this.loginData.loginPassword )
@@ -74,7 +67,7 @@ export default {
                 this.loginData.loginEmail = '';
                 this.loginData.loginPassword = '';
 
-                this.showLoginModal(false);
+                this.closeModal();
                 this.$emit( 'updateheader', this.loginSuccess );
             })
             .catch( error => {

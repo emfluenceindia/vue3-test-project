@@ -1,45 +1,35 @@
 <template>
     <section v-if="showPopup">
-        <section class="z-20 w-screen h-screen bg-gray-400 fixed top-0 opacity-75" @click="showRegisterModal(false)"></section>
-        <div class="absolute inset-0">
-            <div class="flex h-full">
-                <div class="z-30 m-auto p-3 w-5/12 bg-gray-200 rounded-md shadow-2xl">
-                    <fieldset class="border rounded border-white p-2 w-full bg-white shadow-xl">
-                        <legend class="text-left text-lg uppercase font-semibold px-2 rounded bg-white text-gray-600">Register</legend>
-                        <form @submit.prevent="submitRegister">
-                            <div class="w-11/12 m-auto">
-                                <div class="w-full text-left mt-5">
-                                    <label class="block w-full text-sm font-medium" for="txtRegisterEmail">Email</label>
-                                    <input v-model="userEmail" type="email" id="txtRegisterEmail" required maxlength="75" class="border border-l-0 border-r-0 border-t-0 border-gray-300 w-full outline-none" />
-                                </div>
-                                <div class="w-full text-left mt-3 mb-2">
-                                    <label class="block w-full text-sm font-medium" for="txtRegisterPassword">Password</label>
-                                    <input v-model="userPassword" type="password" id="txtRegisterPassword" required maxlength="30" pattern="[A-Za-z_.0-9]+" class="border border-l-0 border-r-0 border-t-0 border-gray-300 w-full outline-none" />
-                                </div>
-                                <!--
-                                <div class="w-full text-left mt-3 mb-2">
-                                    <label class="block w-full text-sm font-medium" for="txtRegisterFullName">Full Name</label>
-                                    <input v-model="userData.registerFullName" type="text" id="txtRegisterFullName" required maxlength="50" pattern="[A-Za-z\s]+" class="border border-l-0 border-r-0 border-t-0 border-gray-300 w-full outline-none" />
-                                </div>
-                                <div class="w-full text-left mt-3 mb-2">
-                                    <label class="block w-full text-sm font-medium" for="txtRegisterPhone">Phone</label>
-                                    <input v-model="userData.registerPhone" type="text" id="txtRegisterPhone" required maxlength="12" pattern="[0-9\s]+" class="border border-l-0 border-r-0 border-t-0 border-gray-300 w-full outline-none" />
-                                </div>
-                                -->
-                            </div>
-                            <div class="mt-5 pb-3">
-                                <Button behavior="submit" baseColor="green">
-                                    <span><i class="fa fa-user-plus" aria-hidden="true"></i>&nbsp;sign up</span>
-                                </Button>
-                                <Button @click.prevent="showRegisterModal(false)" baseColor="orange">
-                                    <span><i class="fa fa-ban" aria-hidden="true"></i>&nbsp;cancel</span>
-                                </Button>
-                            </div>
-                        </form>
-                    </fieldset>
+        <form @submit.prevent="submitRegister">
+            <div class="w-11/12 m-auto">
+                <div class="w-full text-left mt-5">
+                    <label class="block w-full text-sm font-medium" for="txtRegisterEmail">Email</label>
+                    <input v-model="userEmail" type="email" id="txtRegisterEmail" required maxlength="75" class="border border-l-0 border-r-0 border-t-0 border-gray-300 w-full outline-none" />
                 </div>
+                <div class="w-full text-left mt-3 mb-2">
+                    <label class="block w-full text-sm font-medium" for="txtRegisterPassword">Password</label>
+                    <input v-model="userPassword" type="password" id="txtRegisterPassword" required maxlength="30" pattern="[A-Za-z_.0-9]+" class="border border-l-0 border-r-0 border-t-0 border-gray-300 w-full outline-none" />
+                </div>
+                <!--
+                <div class="w-full text-left mt-3 mb-2">
+                    <label class="block w-full text-sm font-medium" for="txtRegisterFullName">Full Name</label>
+                    <input v-model="userData.registerFullName" type="text" id="txtRegisterFullName" required maxlength="50" pattern="[A-Za-z\s]+" class="border border-l-0 border-r-0 border-t-0 border-gray-300 w-full outline-none" />
+                </div>
+                <div class="w-full text-left mt-3 mb-2">
+                    <label class="block w-full text-sm font-medium" for="txtRegisterPhone">Phone</label>
+                    <input v-model="userData.registerPhone" type="text" id="txtRegisterPhone" required maxlength="12" pattern="[0-9\s]+" class="border border-l-0 border-r-0 border-t-0 border-gray-300 w-full outline-none" />
+                </div>
+                -->
             </div>
-        </div>
+            <div class="mt-5 pb-3">
+                <Button behavior="submit" baseColor="green">
+                    <span><i class="fa fa-user-plus" aria-hidden="true"></i>&nbsp;sign up</span>
+                </Button>
+                <Button @click.prevent="closeModal" baseColor="orange">
+                    <span><i class="fa fa-ban" aria-hidden="true"></i>&nbsp;cancel</span>
+                </Button>
+            </div>
+        </form>
     </section>
 </template>
 
@@ -71,20 +61,26 @@ export default {
             .then( () => { 
                 userEmail.value = '';
                 userPassword.value = '';
-                showRegisterModal(false);
+                //showRegisterModal(false);
+                closeModal();
             } )
             .catch( err => {
                 console.log( err );
             } )
         };
 
-        const showRegisterModal = (value) => {
-            emit( 'open-register-popup', value );
+        // const showRegisterModal = (value) => {
+        //     emit( 'open-register-popup', value );
+        // }
+
+        const closeModal = () => {
+            emit('hidemodal');
         }
 
         return {
             submitRegister,
-            showRegisterModal,
+            //showRegisterModal,
+            closeModal,
             userEmail,
             userPassword
         }
