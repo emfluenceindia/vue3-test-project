@@ -16,7 +16,7 @@
     </div>
     <LoginModal :show="show" @hidemodal="hideLoginModal" @updateheader="updateHeader" @close-login-and-open-register="closeLoginAndOpenRegister" />
     <RegisterModal :showPopup="showRegisterPopup" @open-register-popup="hideRegisterModal" />
-    <AuthPopup :showPopup="true" :showLogin="true" :showRegister="false" :popupLabel="login" />
+    <AuthPopup :showModal="showModal" :showLogin="true" :showRegister="false" :popupLabel="modalLabel" @close-popup="closePopup" />
   </div>
 </template>
 
@@ -39,14 +39,24 @@ export default {
     const placeId = ref(0);
     const places = ref([]);
     const show = ref(false);
+    const showModal = ref(false);
+    const modalLabel = ref('');
     const showRegisterPopup = ref(false);
     const loginState = ref({});
     const isUserLoggedIn = ref(false);
     const authUserEmail = ref('');
 
     // functions
-    const openLoginModal = (newValue => {
-      show.value = newValue;
+    const closePopup = (()=>{
+      showModal.value = false;
+      console.log(close.value);
+    });
+
+    const openLoginModal = (( obj ) => {
+      //show.value = newValue;
+      showModal.value = obj.modalState;
+      modalLabel.value = obj.modalLabel;
+      //console.log(newValue, label);
     });
 
     const hideLoginModal = (newValue => {
@@ -98,11 +108,14 @@ export default {
       placeId,
       places,
       show,
+      showModal,
+      modalLabel,
       showRegisterPopup,
       loginState,
       isUserLoggedIn,
       authUserEmail,
-
+      
+      closePopup,
       openLoginModal,
       hideLoginModal,
       hideRegisterModal,
