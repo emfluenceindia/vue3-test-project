@@ -16,7 +16,6 @@
                 </div>
                 <div v-else>
                     <i class="fa fa-sign-in"></i><a href="/sign-in" @click.prevent="openModal(showModal, 'login', 1)">Sign In</a>
-                    <!-- <i class="fa fa-user-plus"></i><a href="/sign-up" @click.prevent="openRegisterModal(showRegisterModal)" >Sign Up</a> -->
                     <i class="fa fa-user-plus"></i><a href="/sign-up" @click.prevent="openModal(showModal, 'register', 2)">Sign Up</a>
                 </div>
             </div>
@@ -124,7 +123,6 @@ export default {
 
             isLoggedIn: true,
             showModal: true,
-            showRegisterModal: true,
 
             user: {
                 id: 1,
@@ -143,10 +141,6 @@ export default {
                 modalLabel: label, 
                 currentPopupId: popupId 
             });
-        },
-
-        openRegisterModal(value) {
-            this.$emit( 'open-register-modal', value );
         },
 
         signOut() {
