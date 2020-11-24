@@ -24,6 +24,7 @@ import { computed, onMounted, ref } from 'vue';
 
 export default {
   name: 'App',
+  //emits:[ 'openmodal', 'signout' ],
 
   // Start setup() method
   setup() {
