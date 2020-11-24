@@ -11,23 +11,15 @@
     />
     <div id="container">
       <router-view></router-view>
-      <!-- <DestinationList heading="Destinations" @placedetail="showPlaceDetail" />
-      <DestinationDetail :place="places" /> -->
     </div>
-    <LoginModal :show="show" @hidemodal="hideLoginModal" @updateheader="updateHeader" @close-login-and-open-register="closeLoginAndOpenRegister" />
-    <RegisterModal :showPopup="showRegisterPopup" @open-register-popup="hideRegisterModal" />
     <AuthPopup :showModal="showModal" :popupId="popupId" :popupLabel="modalLabel" @close-popup="closePopup" />
   </div>
 </template>
 
 <script>
 import InfoTrekHeader from './components/InfoTrekHeader.vue';
-import LoginModal from './components/LoginModal.vue';
-import RegisterModal from './components/RegisterModal.vue';
 import AuthPopup from './components/AuthenticationModal.vue';
 import firebase from './utilities/firebase';
-// import DestinationList from './components/destination/DestinationList.vue';
-// import DestinationDetail from './components/destination/DestinationDetail.vue';
 
 import { computed, onMounted, ref } from 'vue';
 
@@ -36,13 +28,8 @@ export default {
 
   // Start setup() method
   setup() {
-    const placeId = ref(0);
-    const places = ref([]);
-    const show = ref(false);
     const showModal = ref(false);
     const modalLabel = ref('');
-    const showRegisterPopup = ref(false);
-    const loginState = ref({});
     const isUserLoggedIn = ref(false);
     const authUserEmail = ref('');
     const popupId = ref(0);
@@ -53,25 +40,9 @@ export default {
     });
 
     const openLoginModal = (( obj ) => {
-      //show.value = newValue;
-      //console.log(obj);
       showModal.value = obj.modalState;
       modalLabel.value = obj.modalLabel;
       popupId.value = obj.currentPopupId;
-      //console.log(newValue, label);
-    });
-
-    const hideLoginModal = (newValue => {
-      show.value = newValue;
-    });
-
-    const hideRegisterModal = (newValue => {
-      showRegisterPopup.value = newValue;
-    });
-
-    const closeLoginAndOpenRegister = ( () => {
-      showRegisterPopup.value = true;
-      show.value = false;
     });
 
     const updateHeader = (loginStatus => {
@@ -107,26 +78,17 @@ export default {
     });
 
     return {
-      placeId,
-      places,
-      show,
       showModal,
       modalLabel,
       popupId,
-      showRegisterPopup,
-      loginState,
       isUserLoggedIn,
       authUserEmail,
       
       closePopup,
       openLoginModal,
-      hideLoginModal,
-      hideRegisterModal,
       updateHeader,
       logOut,
       userDisplayName,
-
-      closeLoginAndOpenRegister
     }
 
   },
@@ -134,11 +96,7 @@ export default {
 
   components: {
     InfoTrekHeader,
-    LoginModal,
-    RegisterModal,
     AuthPopup,
-    // DestinationList,
-    // DestinationDetail
   },
 
   /*data() {
