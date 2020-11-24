@@ -34,7 +34,7 @@
             </li>
             <li>
                 <a v-if="isAuthenticated" @click.prevent="signOut" class="cursor-pointer">Logout</a>
-                <a v-else class="cursor-pointer" @click="openModal(showModal)">Login</a>
+                <a v-else class="cursor-pointer" @click.prevent="openModal(showModal, 'login', 1)">Login</a>
             </li>
         </ul>
     </nav>
