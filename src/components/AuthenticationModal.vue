@@ -9,10 +9,10 @@
                         <legend class="text-left text-lg uppercase font-semibold px-2 rounded bg-white text-gray-600">{{popupLabel}}</legend>
                         <!-- Login popup -->
                         <section v-if="popupId === 1">
-                            Login
+                            <Login :show="true" />
                         </section>
                         <section v-else>
-                            Register
+                            <Register :showPopup="true" />
                         </section>
                         <!-- Register popup -->
                     </fieldset>
@@ -24,15 +24,15 @@
 
 <script>
 //import Button from './Button.vue';
-// import Login from './LoginModal.vue';
-// import Register from './RegisterModal.vue';
+import Login from './LoginModal.vue';
+import Register from './RegisterModal.vue';
 
 export default {
     name: 'AuthicationModal',
     components: {
         //Button,
-        // Login,
-        // Register
+        Login,
+        Register
     },
     props: {
         showModal: {

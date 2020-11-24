@@ -54,7 +54,7 @@ export default {
 
     const openLoginModal = (( obj ) => {
       //show.value = newValue;
-      console.log(obj);
+      //console.log(obj);
       showModal.value = obj.modalState;
       modalLabel.value = obj.modalLabel;
       popupId.value = obj.currentPopupId;
