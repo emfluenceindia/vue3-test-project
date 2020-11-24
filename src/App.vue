@@ -16,6 +16,7 @@
     </div>
     <LoginModal :show="show" @hidemodal="hideLoginModal" @updateheader="updateHeader" @close-login-and-open-register="closeLoginAndOpenRegister" />
     <RegisterModal :showPopup="showRegisterPopup" @open-register-popup="hideRegisterModal" />
+    <AuthPopup :showPopup="true" :showLogin="true" :showRegister="false" :popupLabel="login" />
   </div>
 </template>
 
@@ -23,6 +24,7 @@
 import InfoTrekHeader from './components/InfoTrekHeader.vue';
 import LoginModal from './components/LoginModal.vue';
 import RegisterModal from './components/RegisterModal.vue';
+import AuthPopup from './components/AuthenticationModal.vue';
 import firebase from './utilities/firebase';
 // import DestinationList from './components/destination/DestinationList.vue';
 // import DestinationDetail from './components/destination/DestinationDetail.vue';
@@ -118,6 +120,7 @@ export default {
     InfoTrekHeader,
     LoginModal,
     RegisterModal,
+    AuthPopup,
     // DestinationList,
     // DestinationDetail
   },
