@@ -22,10 +22,10 @@
                 -->
             </div>
             <div class="mt-5 pb-3">
-                <Button behavior="submit" baseColor="green">
+                <Button :behavior="buttonType.submit" baseColor="green">
                     <span><i class="fa fa-user-plus" aria-hidden="true"></i>&nbsp;sign up</span>
                 </Button>
-                <Button @click.prevent="closeModal" baseColor="orange">
+                <Button :behavior="buttonType.reset" @click.prevent="closeModal" baseColor="orange">
                     <span><i class="fa fa-ban" aria-hidden="true"></i>&nbsp;cancel</span>
                 </Button>
             </div>
@@ -55,6 +55,11 @@ export default {
     setup( props, { emit } ) {
         const userEmail = ref('');
         const userPassword = ref('');
+
+        const buttonType = ref({
+            submit: 'submit',
+            reset: 'reset',
+        });
         
         const submitRegister = () => {
             firebase.default.auth().createUserWithEmailAndPassword( userEmail.value, userPassword.value )
@@ -73,6 +78,7 @@ export default {
         }
 
         return {
+            buttonType,
             submitRegister,
             closeModal,
             userEmail,

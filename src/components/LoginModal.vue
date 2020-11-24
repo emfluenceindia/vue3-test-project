@@ -12,10 +12,10 @@
                 </div>
             </div>
             <div class="mt-5 pb-3">
-                <Button behavior="submit" baseColor="green">
+                <Button :behavior="buttonType.submit" baseColor="green">
                     <span><i class="fa fa-sign-in" aria-hidden="true"></i>&nbsp;sign in</span>
                 </Button>
-                <Button behavior="submit" baseColor="orange" @click.prevent="closeModal">
+                <Button :behavior="buttonType.reset" baseColor="orange" @click.prevent="closeModal">
                     <span><i class="fa fa-ban" aria-hidden="true"></i>&nbsp;cancel</span>
                 </Button>
             </div>
@@ -41,6 +41,10 @@ export default {
     },
     data() {
         return {
+            buttonType: {
+                submit: 'submit',
+                reset: 'reset',
+            },
             loginSuccess: false,
             loginState: {
                 isLoggedIn: false,
