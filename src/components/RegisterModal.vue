@@ -61,7 +61,6 @@ export default {
             .then( () => { 
                 userEmail.value = '';
                 userPassword.value = '';
-                //showRegisterModal(false);
                 closeModal();
             } )
             .catch( err => {
@@ -69,17 +68,12 @@ export default {
             } )
         };
 
-        // const showRegisterModal = (value) => {
-        //     emit( 'open-register-popup', value );
-        // }
-
         const closeModal = () => {
             emit('hidemodal');
         }
 
         return {
             submitRegister,
-            //showRegisterModal,
             closeModal,
             userEmail,
             userPassword
