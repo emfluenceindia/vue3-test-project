@@ -138,7 +138,11 @@ export default {
 
     methods: {
         openModal(value, label, popupId) {
-            this.$emit( 'openmodal', { modalState: value, modalLabel: label, currentPopupId: popupId } );
+            this.$emit( 'openmodal', { 
+                modalState: value, 
+                modalLabel: label, 
+                currentPopupId: popupId 
+            });
         },
 
         openRegisterModal(value) {

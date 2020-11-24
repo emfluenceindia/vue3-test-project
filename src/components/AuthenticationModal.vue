@@ -10,7 +10,7 @@
                         
                         <!-- Login popup -->
                         <section v-if="popupId === 1">
-                            <Login :show="true" />
+                            <Login :show="true" @hidemodal="closePopup" />
                         </section>
                         
                         <!-- Register popup -->
@@ -60,9 +60,6 @@ export default {
         closePopup() {
             this.$emit( 'close-popup' );
         },
-        submitLogin() {
-
-        }
     }
 }
 </script>

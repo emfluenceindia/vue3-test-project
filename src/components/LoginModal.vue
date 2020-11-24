@@ -15,7 +15,7 @@
                 <Button behavior="submit" baseColor="green">
                     <span><i class="fa fa-sign-in" aria-hidden="true"></i>&nbsp;sign in</span>
                 </Button>
-                <Button behavior="submit" baseColor="orange" @click.prevent="showLoginModal(false)">
+                <Button behavior="submit" baseColor="orange" @click.prevent="closeModal">
                     <span><i class="fa fa-ban" aria-hidden="true"></i>&nbsp;cancel</span>
                 </Button>
             </div>
@@ -56,8 +56,8 @@ export default {
         }
     },
     methods: {
-        showLoginModal(value) {
-            this.$emit('hidemodal', value);
+        closeModal() {
+            this.$emit('hidemodal');
         },
 
         closeLoginAndOpenRegister() {
