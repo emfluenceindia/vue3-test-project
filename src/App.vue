@@ -1,8 +1,8 @@
 <template>
   <div>
     <InfoTrekHeader 
-      brand="Aim High" 
-      slogan="Mountain is calling" 
+      :brand="branding.title"
+      :slogan="branding.catchLine" 
       :isAuthenticated="isUserLoggedIn" 
       :userDisplayName="userDisplayName"
       @openmodal="openAuthModal"
@@ -11,7 +11,12 @@
     <div id="container">
       <router-view></router-view>
     </div>
-    <AuthPopup :showModal="showModal" :popupId="popupId" :popupLabel="modalLabel" @close-popup="closePopup" />
+    <AuthPopup 
+      :showModal="showModal" 
+      :popupId="popupId" 
+      :popupLabel="modalLabel" 
+      @close-popup="closePopup" 
+    />
   </div>
 </template>
 
@@ -33,6 +38,10 @@ export default {
     const isUserLoggedIn = ref(false);
     const authUserEmail = ref('');
     const popupId = ref(0);
+    const branding = ref({
+      title: 'Aim High',
+      catchLine: 'Mountain is calling',
+    });
 
     // functions
     const closePopup = (()=>{
@@ -78,6 +87,7 @@ export default {
     });
 
     return {
+      branding,
       showModal,
       modalLabel,
       popupId,
