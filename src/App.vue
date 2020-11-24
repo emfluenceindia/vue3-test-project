@@ -5,8 +5,7 @@
       slogan="Mountain is calling" 
       :isAuthenticated="isUserLoggedIn" 
       :userDisplayName="userDisplayName"
-      @openmodal="openLoginModal"
-      @open-register-modal="hideRegisterModal"
+      @openmodal="openAuthModal"
       @signout="logOut" 
     />
     <div id="container">
@@ -39,7 +38,7 @@ export default {
       showModal.value = false;
     });
 
-    const openLoginModal = (( obj ) => {
+    const openAuthModal = (( obj ) => {
       showModal.value = obj.modalState;
       modalLabel.value = obj.modalLabel;
       popupId.value = obj.currentPopupId;
@@ -85,7 +84,7 @@ export default {
       authUserEmail,
       
       closePopup,
-      openLoginModal,
+      openAuthModal,
       updateHeader,
       logOut,
       userDisplayName,
@@ -98,65 +97,6 @@ export default {
     InfoTrekHeader,
     AuthPopup,
   },
-
-  /*data() {
-    return {
-      placeId: 0,
-      places: [],
-      show: false,
-      showRegisterPopup: false,
-      loginState: {},
-      isUserLoggedIn: false,
-      authUserDisplayName: '',
-    }
-  },
-
-  methods: {
-    showPlaceDetail(item) {
-      this.places = item;
-      console.log(this.places);
-    }
-
-    openLoginModal(value) {
-      this.show = value;
-      //console.log(this.show);
-    },
-
-    hideLoginModal(value) {
-      this.show = value;
-      //console.log(this.show);
-    },
-
-    hideRegisterModal(value) {
-      this.showRegisterPopup = value;
-    },
-
-    updateHeader(loginStatus) {
-      this.isUserLoggedIn = loginStatus;
-    },
-
-    logOut() {
-      firebase.default.auth().signOut()
-      .then( () => {
-        this.isUserLoggedIn = false;
-      } )
-      .catch( error => { console.log( error ); } );
-    },
-    
-  },
-  
-  mounted() {
-    firebase.default.auth().onAuthStateChanged( user => {
-      if( user ) {
-        this.authUserDisplayName = user.email.split( '@' )[0];
-        this.updateHeader(true);
-      } else {
-        this.updateHeader(false);
-        // Do something. maybe open the login popup
-      }
-    } );
-  }
-  */
 }
 </script>
 
