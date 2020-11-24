@@ -8,6 +8,12 @@
                     <fieldset class="border rounded border-white p-2 w-full bg-white shadow-xl">
                         <legend class="text-left text-lg uppercase font-semibold px-2 rounded bg-white text-gray-600">{{popupLabel}}</legend>
                         <!-- Login popup -->
+                        <section v-if="popupId === 1">
+                            Login
+                        </section>
+                        <section v-else>
+                            Register
+                        </section>
                         <!-- Register popup -->
                     </fieldset>
                 </div>
@@ -18,25 +24,24 @@
 
 <script>
 //import Button from './Button.vue';
+// import Login from './LoginModal.vue';
+// import Register from './RegisterModal.vue';
+
 export default {
     name: 'AuthicationModal',
     components: {
-        //Button
+        //Button,
+        // Login,
+        // Register
     },
     props: {
         showModal: {
             type: Boolean,
             required: true
         },
-        showLogin: {
-            type: Boolean,
-            required: true,
-            default: false
-        },
-        showRegister: {
-            type: Boolean,
-            required: true,
-            default: false
+        popupId: {
+            type: Number,
+            required: true
         },
         popupLabel: {
             type: String,
@@ -53,7 +58,6 @@ export default {
     },
     methods: {
         closePopup() {
-            console.log('dsdsdsd');
             this.$emit( 'close-popup' );
         },
         submitLogin() {

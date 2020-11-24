@@ -16,7 +16,7 @@
     </div>
     <LoginModal :show="show" @hidemodal="hideLoginModal" @updateheader="updateHeader" @close-login-and-open-register="closeLoginAndOpenRegister" />
     <RegisterModal :showPopup="showRegisterPopup" @open-register-popup="hideRegisterModal" />
-    <AuthPopup :showModal="showModal" :showLogin="true" :showRegister="false" :popupLabel="modalLabel" @close-popup="closePopup" />
+    <AuthPopup :showModal="showModal" :popupId="popupId" :popupLabel="modalLabel" @close-popup="closePopup" />
   </div>
 </template>
 
@@ -45,17 +45,19 @@ export default {
     const loginState = ref({});
     const isUserLoggedIn = ref(false);
     const authUserEmail = ref('');
+    const popupId = ref(0);
 
     // functions
     const closePopup = (()=>{
       showModal.value = false;
-      console.log(close.value);
     });
 
     const openLoginModal = (( obj ) => {
       //show.value = newValue;
+      console.log(obj);
       showModal.value = obj.modalState;
       modalLabel.value = obj.modalLabel;
+      popupId.value = obj.currentPopupId;
       //console.log(newValue, label);
     });
 
@@ -110,6 +112,7 @@ export default {
       show,
       showModal,
       modalLabel,
+      popupId,
       showRegisterPopup,
       loginState,
       isUserLoggedIn,

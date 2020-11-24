@@ -15,8 +15,9 @@
                     Welcome {{userDisplayName}}!<i class="fa fa-sign-out"></i> <a @click.prevent="signOut" href="/sign-out">Log Out</a>
                 </div>
                 <div v-else>
-                    <i class="fa fa-sign-in"></i><a href="/sign-in" @click.prevent="openModal(showModal, 'login')">Sign In</a>
-                    <i class="fa fa-user-plus"></i><a href="/sign-up" @click.prevent="openRegisterModal(showRegisterModal)" >Sign Up</a>
+                    <i class="fa fa-sign-in"></i><a href="/sign-in" @click.prevent="openModal(showModal, 'login', 1)">Sign In</a>
+                    <!-- <i class="fa fa-user-plus"></i><a href="/sign-up" @click.prevent="openRegisterModal(showRegisterModal)" >Sign Up</a> -->
+                    <i class="fa fa-user-plus"></i><a href="/sign-up" @click.prevent="openModal(showModal, 'register', 2)">Sign Up</a>
                 </div>
             </div>
             <ul>
@@ -136,8 +137,8 @@ export default {
     },
 
     methods: {
-        openModal(value, label) {
-            this.$emit( 'openmodal', { modalState: value, modalLabel: label } );
+        openModal(value, label, popupId) {
+            this.$emit( 'openmodal', { modalState: value, modalLabel: label, currentPopupId: popupId } );
         },
 
         openRegisterModal(value) {
