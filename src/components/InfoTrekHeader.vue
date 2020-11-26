@@ -1,16 +1,33 @@
 <template>
-    <header class="m-0 p-1 bg-green-800 box-border w-full border-b-1 border-yellow-500">
-        <div class="flex flex-no-wrap">
+    <header class="m-0 p-1 bg-green-800 box-border w-full border-b-1 border-yellow-500 ">
+        <div class="flex flex-no-wrap justify-between">
+            <!-- Logo and Branding Area -->
             <div>
-                <div class="flex flex-wrap justify-center">
+                <div class="flex flex-wrap m-2">
                     <div>
                         <a href="/"><img class="w-full md:w-24 shadow-md p-2 mr-4" src="../assets/logo-2.png" :alt="brand"></a>
                     </div>
                     <div class="text-left">
                         <h1 class="text-2xl uppercase text-white m-0" style="font-family: 'Fredoka One', cursive;">{{brand}}</h1>
-                        <p class="m-0 text-gray-100 text-sm uppercase bg-green-700 text-center rounded p-1">{{slogan}}</p>
+                        <p class="m-0 text-gray-100 text-xs uppercase bg-green-700 text-center rounded p-1">{{slogan}}</p>
                     </div>
                 </div>
+            </div>
+            
+            <!-- Social Activity Area -->
+            <div class="mr-6 mt-3 text-white">
+                <div v-if="isAuthenticated">
+                    Welcome {{userDisplayName}}!<i class="fa fa-sign-out"></i> <a @click.prevent="signOut" href="/sign-out">Log Out</a>
+                </div>
+                <div v-else>
+                    <i class="fa fa-sign-in pr-1"></i><a class="mr-3 text-sm uppercase text-yellow-500" href="/sign-in" @click.prevent="openModal(showModal, 'login', 1)">Sign In</a>
+                    <i class="fa fa-user-plus pr-1"></i><a class="text-sm uppercase text-yellow-500" href="/sign-up" @click.prevent="openModal(showModal, 'register', 2)">Sign Up</a>
+                </div>
+                <ul class="flex justify-center flex-no-wrap mt-2">
+                    <li v-for="item in socialItems" :key="item.index">
+                        <a :href="item.url" :class="item.lower_name"><i :class="item.icon" class="text-2xl mx-2 p-0 text-white" :title="item.name"></i> </a>
+                    </li>
+                </ul>
             </div>
         </div>
         <!-- <div id="logo">
@@ -22,7 +39,7 @@
                 </div>
             </a>
         </div> -->
-        <div id="social">
+        <!-- <div id="social">
             <div id="auth">
                 <div v-if="isAuthenticated">
                     Welcome {{userDisplayName}}!<i class="fa fa-sign-out"></i> <a @click.prevent="signOut" href="/sign-out">Log Out</a>
@@ -37,7 +54,7 @@
                     <a :href="item.url" :class="item.lower_name"><i :class="item.icon" class="text-2xl mx-2 p-0 text-white" :title="item.name"></i> </a>
                 </li>
             </ul>
-        </div>
+        </div> -->
     </header>
     <nav id="main">
         <ul>
@@ -235,7 +252,7 @@ export default {
     }
     */
 
-    #auth {
+    /* #auth {
         text-align: center;
         color: gainsboro;
         margin: 0 0 1rem 0;
@@ -283,7 +300,7 @@ export default {
         text-transform: uppercase;
         text-decoration: none;
         font-size: .9rem;
-    }
+    } */
 
     
 

@@ -40,7 +40,7 @@ export default {
     const popupId = ref(0);
     const branding = ref({
       title: 'Mountain Walkers',
-      catchLine: 'the best is yet to come',
+      catchLine: 'the best view awaits you at the top',
     });
 
     // functions
