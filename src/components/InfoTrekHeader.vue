@@ -5,7 +5,9 @@
             <div>
                 <div class="flex flex-wrap m-2">
                     <div>
-                        <a href="/"><img class="w-full md:w-24 shadow-md p-2 mr-4" src="../assets/logo-2.png" :alt="brand"></a>
+                        <a href="/">
+                            <img class="w-full md:w-24 shadow-md p-2 mr-4" src="../assets/logo-2.png" :alt="brand">
+                        </a>
                     </div>
                     <div class="text-left">
                         <h1 class="text-2xl uppercase text-white m-0" style="font-family: 'Fredoka One', cursive;">{{brand}}</h1>
@@ -40,13 +42,16 @@
 
         <!-- mavigation -->
         <nav class="bg-gradient-to-l from-green-600 to-green-400 p-2 mt-6 box-border align-baseline w-full border-b-2 border-gray-400">
-            <ul class="flex justify-left">
+            <p id="hamburgerbtn" class="md:hidden text-right">
+                <i class="fa fa-bars text-white cursor-pointer text-2xl mx-4 rounded bg-gradient-to-b from-orange-500 to-orange-800 shadow-lg px-2 py-1 box-border" aria-hidden="true"></i>
+            </p>
+            <ul class="hidden md:flex md:flex-row justify-left" id="mobilemenu">
                 <li class="mx-1 box-border" v-for="menuItem in menuItems" :key="menuItem.id">
-                    <router-link :class="menuItem.title.toLowerCase()" class="tracking-wide px-3 py-1 uppercase text-sm block font-semibold text-green-900 hover:shadow-md" :to="menuItem.link">{{menuItem.title}}</router-link>
+                    <router-link :class="menuItem.title.toLowerCase()" class="tracking-wide px-3 py-1 uppercase text-sm block font-semibold text-green-900 hover:shadow-md text-left" :to="menuItem.link">{{menuItem.title}}</router-link>
                 </li>
                 <li class="mx-1 box-border">
-                    <a class="tracking-wide cursor-pointer px-3 py-1 uppercase text-sm block font-semibold text-green-900 hover:shadow-md" v-if="isAuthenticated" @click.prevent="signOut">Logout</a>
-                    <a v-else class="tracking-wide cursor-pointer px-3 py-1 uppercase text-sm block font-semibold text-green-900 hover:shadow-md" @click.prevent="openModal(showModal, 'login', 1)">log in</a>
+                    <a class="tracking-wide cursor-pointer px-3 py-1 uppercase text-sm block font-semibold text-green-900 hover:shadow-md text-left" v-if="isAuthenticated" @click.prevent="signOut">Logout</a>
+                    <a v-else class="tracking-wide cursor-pointer px-3 py-1 uppercase text-sm block font-semibold text-green-900 hover:shadow-md text-left" @click.prevent="openModal(showModal, 'login', 1)">log in</a>
                 </li>
             </ul>
         </nav>
@@ -74,6 +79,7 @@ export default {
             required: true
         }
     },
+
     data() {
         return {
             socialItems: [
@@ -157,7 +163,44 @@ export default {
 
         signOut() {
             this.$emit( 'signout' );
+        },
+
+        /**
+         * hamburger menu
+         */
+        toggleMobileMenu() {
+            let hb = document.getElementById('hamburgerbtn');
+            let mobileMenu = document.getElementById('mobilemenu');
+            hb.addEventListener( 'click', () => {
+                mobileMenu.classList.toggle( 'active' );
+            } );
         }
+    },
+
+    mounted() {
+        this.toggleMobileMenu();
     }
 }
 </script>
+
+<style scoped>
+    .active {
+        display: block;
+    }
+
+    .active a {
+        color: darkgreen;
+        font-weight: 400;
+        text-transform: capitalize;
+    }
+
+    .active a:before {
+        font-family: "FontAwesome";
+        content: '\f0da';
+        color: white;
+        margin-right: .5rem;
+        padding: .17rem .4rem .17rem .5rem;
+        background-color: darkgreen;
+        border-radius: 50%;
+    }
+</style>>
