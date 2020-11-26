@@ -44,6 +44,7 @@
             Site Navigation
             Responsive: https://medium.com/@Mrsimi/responsive-navbar-in-tailwindcss-the-fast-lane-cce11fdf78f7
             @apply: https://tailwindcss.com/docs/functions-and-directives#apply
+            Tailwind CSS: https://www.youtube.com/watch?v=21HuwjmuS7A&list=PL7CcGwsqRpSM3w9BT_21tUU8JN2SnyckR&index=1
         -->
         <nav class="bg-gradient-to-l from-green-600 to-green-400 p-2 mt-6 box-border align-baseline w-full border-b-2 border-gray-400">
             <p id="hamburgerbtn" class="md:hidden text-right">
