@@ -1,5 +1,5 @@
 <template>
-    <header class="m-0 p-1 bg-green-800 box-border w-full border-b-1 border-yellow-500 ">
+    <header class="m-0 pt-3 bg-green-800 box-border w-full border-b-1 border-yellow-500 ">
         <div class="flex flex-no-wrap justify-between">
             <!-- Logo and Branding Area -->
             <div>
@@ -30,43 +30,21 @@
                 </ul>
             </div>
         </div>
-        <!-- <div id="logo">
-            <a href="/">
-                <img src="../assets/logo-2.png" :alt="brand">
-                <div class="associate">
-                    <h1>{{brand}}</h1>
-                    <span>{{slogan}}</span>
-                </div>
-            </a>
-        </div> -->
-        <!-- <div id="social">
-            <div id="auth">
-                <div v-if="isAuthenticated">
-                    Welcome {{userDisplayName}}!<i class="fa fa-sign-out"></i> <a @click.prevent="signOut" href="/sign-out">Log Out</a>
-                </div>
-                <div v-else>
-                    <i class="fa fa-sign-in"></i><a href="/sign-in" @click.prevent="openModal(showModal, 'login', 1)">Sign In</a>
-                    <i class="fa fa-user-plus"></i><a href="/sign-up" @click.prevent="openModal(showModal, 'register', 2)">Sign Up</a>
-                </div>
-            </div>
-            <ul class="flex justify-center flex-no-wrap">
-                <li v-for="item in socialItems" :key="item.index">
-                    <a :href="item.url" :class="item.lower_name"><i :class="item.icon" class="text-2xl mx-2 p-0 text-white" :title="item.name"></i> </a>
+
+        <!-- mavigation -->
+        <nav class="bg-gradient-to-l from-green-600 to-green-400 p-2 mt-6 box-border align-baseline w-full border-b-2 border-gray-400">
+            <ul class="flex justify-left">
+                <li class="mx-1 box-border" v-for="menuItem in menuItems" :key="menuItem.id">
+                    <router-link :class="menuItem.title.toLowerCase()" class="tracking-wide px-3 py-1 uppercase text-sm block font-semibold text-green-900 hover:shadow" :to="menuItem.link">{{menuItem.title}}</router-link>
+                </li>
+                <li class="mx-1 box-border">
+                    <a class="tracking-wide cursor-pointer px-3 py-1 uppercase text-sm block font-semibold text-green-900 hover:shadow" v-if="isAuthenticated" @click.prevent="signOut">Logout</a>
+                    <a v-else class="tracking-wide cursor-pointer px-3 py-1 uppercase text-sm block font-semibold text-green-900 hover:shadow" @click.prevent="openModal(showModal, 'login', 1)">Login</a>
                 </li>
             </ul>
-        </div> -->
+        </nav>
+        
     </header>
-    <nav id="main">
-        <ul>
-            <li v-for="menuItem in menuItems" :key="menuItem.id">
-                <router-link :to="menuItem.link">{{menuItem.title}}</router-link>
-            </li>
-            <li>
-                <a v-if="isAuthenticated" @click.prevent="signOut" class="cursor-pointer">Logout</a>
-                <a v-else class="cursor-pointer" @click.prevent="openModal(showModal, 'login', 1)">Login</a>
-            </li>
-        </ul>
-    </nav>
 </template>
 
 <script>
