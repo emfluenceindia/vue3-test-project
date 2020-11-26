@@ -32,7 +32,7 @@
         </div>
 
         <!-- mavigation -->
-        <Navigation :isAuthenticated="isAuthenticated" :position="header" />
+        <Navigation :isAuthenticated="isAuthenticated" :position="header" @open-login-modal="openModal" />
     </header>
 </template>
 
@@ -111,6 +111,7 @@ export default {
 
     methods: {
         openModal(value, label, popupId) {
+            console.log(value, label, popupId);
             this.$emit( 'openmodal', { 
                 modalState: value, 
                 modalLabel: label, 
