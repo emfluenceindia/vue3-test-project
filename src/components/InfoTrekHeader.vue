@@ -17,10 +17,17 @@
             <!-- Social Activity Area -->
             <div class="mr-6 mt-3 text-white">
                 <div v-if="isAuthenticated">
-                    Welcome {{userDisplayName}}!<i class="fa fa-sign-out"></i> <a @click.prevent="signOut" href="/sign-out">Log Out</a>
+                    <i class="fa fa-user-circle mr-1"></i>
+                    <span class="text-sm">
+                        Logged in as
+                        <span class="text-yellow-500 ml-1 uppercase">{{userDisplayName}}</span>
+                    </span>
+                    <a class="uppercase text-white text-xs bg-gradient-to-t from-red-600 to-red-800 px-3 hover:shadow-lg py-1 ml-2 rounded shadow-md" @click.prevent="signOut" href="/sign-out">
+                        <i class="fa fa-sign-out mr-1"></i>Log Out
+                    </a>
                 </div>
                 <div v-else>
-                    <i class="fa fa-sign-in pr-1"></i><a class="mr-3 text-sm uppercase text-yellow-500" href="/sign-in" @click.prevent="openModal(showModal, 'login', 1)">Sign In</a>
+                    <i class="fa fa-sign-in pr-1"></i><a class="mr-3 text-sm uppercase text-yellow-500" href="/sign-in" @click.prevent="openModal(showModal, 'login', 1)">Log In</a>
                     <i class="fa fa-user-plus pr-1"></i><a class="text-sm uppercase text-yellow-500" href="/sign-up" @click.prevent="openModal(showModal, 'register', 2)">Sign Up</a>
                 </div>
                 <ul class="flex justify-center flex-no-wrap mt-2">
