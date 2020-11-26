@@ -32,17 +32,23 @@
         </div>
 
         <!-- mavigation -->
-        <Navigation :isAuthenticated="isAuthenticated" :position="header" @open-login-modal="openModal" />
+        <nav class="bg-gradient-to-l from-green-600 to-green-400 p-2 mt-6 box-border align-baseline w-full border-b-2 border-gray-400">
+            <ul class="flex justify-left">
+                <li class="mx-1 box-border" v-for="menuItem in menuItems" :key="menuItem.id">
+                    <router-link :class="menuItem.title.toLowerCase()" class="tracking-wide px-3 py-1 uppercase text-sm block font-semibold text-green-900 hover:shadow-md" :to="menuItem.link">{{menuItem.title}}</router-link>
+                </li>
+                <li class="mx-1 box-border">
+                    <a class="tracking-wide cursor-pointer px-3 py-1 uppercase text-sm block font-semibold text-green-900 hover:shadow-md" v-if="isAuthenticated" @click.prevent="signOut">Logout</a>
+                    <a v-else class="tracking-wide cursor-pointer px-3 py-1 uppercase text-sm block font-semibold text-green-900 hover:shadow-md" @click.prevent="openModal(showModal, 'login', 1)">log in</a>
+                </li>
+            </ul>
+        </nav>
     </header>
 </template>
 
 <script>
-import Navigation from './MainNavigation.vue';
 export default {
     name: 'InfoTrekHeader',
-    components: {
-        Navigation
-    },
     props: {
         brand: {
             type: String,
@@ -93,9 +99,33 @@ export default {
                     url: 'https://linkedin.com',
                 }
             ],
-
-            
-
+            menuItems: [
+                    {
+                        id: 1,
+                        title: 'Home',
+                        link: '/'
+                    },
+                    {
+                        id: 2,
+                        title: 'Destinations',
+                        link: '/destinations'
+                    },
+                    {
+                        id: 3,
+                        title: 'Stories',
+                        link: '/stories'
+                    },
+                    {
+                        id: 4,
+                        title: 'About',
+                        link: '/about'
+                    },
+                    {
+                        id: 5,
+                        title: 'Contact',
+                        link: '/contact'
+                    }
+            ],
             isLoggedIn: true,
             showModal: true,
 
@@ -111,7 +141,6 @@ export default {
 
     methods: {
         openModal(value, label, popupId) {
-            console.log(value, label, popupId);
             this.$emit( 'openmodal', { 
                 modalState: value, 
                 modalLabel: label, 

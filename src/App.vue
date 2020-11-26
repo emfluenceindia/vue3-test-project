@@ -49,6 +49,7 @@ export default {
     });
 
     const openAuthModal = (( obj ) => {
+      console.log(obj);
       showModal.value = obj.modalState;
       modalLabel.value = obj.modalLabel;
       popupId.value = obj.currentPopupId;
