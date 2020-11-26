@@ -39,8 +39,8 @@ export default {
     const authUserEmail = ref('');
     const popupId = ref(0);
     const branding = ref({
-      title: 'Aim High',
-      catchLine: 'Mountain is calling',
+      title: 'Mountain Walkers',
+      catchLine: 'the best is yet to come',
     });
 
     // functions

@@ -1,6 +1,19 @@
 <template>
-    <header>
-        <div id="logo">
+    <header class="m-0 p-1 bg-green-800 box-border w-full border-b-1 border-yellow-500">
+        <div class="flex flex-no-wrap">
+            <div>
+                <div class="flex flex-wrap justify-center">
+                    <div>
+                        <a href="/"><img class="w-full md:w-24 shadow-md p-2 mr-4" src="../assets/logo-2.png" :alt="brand"></a>
+                    </div>
+                    <div class="text-left">
+                        <h1 class="text-2xl uppercase text-white m-0" style="font-family: 'Fredoka One', cursive;">{{brand}}</h1>
+                        <p class="m-0 text-gray-100 text-sm uppercase bg-green-700 text-center rounded p-1">{{slogan}}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- <div id="logo">
             <a href="/">
                 <img src="../assets/logo-2.png" :alt="brand">
                 <div class="associate">
@@ -8,7 +21,7 @@
                     <span>{{slogan}}</span>
                 </div>
             </a>
-        </div>
+        </div> -->
         <div id="social">
             <div id="auth">
                 <div v-if="isAuthenticated">
@@ -19,9 +32,9 @@
                     <i class="fa fa-user-plus"></i><a href="/sign-up" @click.prevent="openModal(showModal, 'register', 2)">Sign Up</a>
                 </div>
             </div>
-            <ul>
+            <ul class="flex justify-center flex-no-wrap">
                 <li v-for="item in socialItems" :key="item.index">
-                    <a :href="item.url" :class="item.lower_name"><i :class="item.icon" :title="item.name"></i> </a>
+                    <a :href="item.url" :class="item.lower_name"><i :class="item.icon" class="text-2xl mx-2 p-0 text-white" :title="item.name"></i> </a>
                 </li>
             </ul>
         </div>
@@ -151,7 +164,7 @@ export default {
 </script>
 
 <style scoped>
-    header {
+    /*header {
         margin: 0;
         padding: 1rem;
         background: darkgreen;
@@ -161,9 +174,9 @@ export default {
         justify-content: space-between;
         width: 100%;
         border-bottom: 1px solid yellowgreen;
-    }
+    } */
 
-    #logo {
+    /*#logo {
         width: 25%;
     }
 
@@ -197,9 +210,10 @@ export default {
         text-transform: uppercase;
         font-size: 14px;
         letter-spacing: .1rem;
-    }
+    }*/
 
     /** social */
+    /*
     #social ul {
         margin: 0;
         padding: 0;
@@ -219,6 +233,7 @@ export default {
         font-size: 1.6rem;
         color: gainsboro;
     }
+    */
 
     #auth {
         text-align: center;
