@@ -220,6 +220,16 @@ export default {
     };
   },
 
+  watch: {
+    // isLoggedIn(value) {
+    //   setTimeout(() => {
+    //     if (value === false) {
+    //       console.log("You are signed out!");
+    //     }
+    //   }, 2000);
+    // },
+  },
+
   methods: {
     openModal(value, label, popupId) {
       this.$emit("openmodal", {
@@ -247,6 +257,7 @@ export default {
 
   mounted() {
     this.toggleMobileMenu();
+    //this.isLoggedIn = false;
   },
 };
 </script>
