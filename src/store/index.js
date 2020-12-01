@@ -6,12 +6,14 @@ const store = createStore({
       count: 1,
       currentUser: {},
       userDisplayName: "",
+      isAuthenticated: false,
     };
   },
   mutations: {
     storeUser(state, user) {
       state.currentUser = user;
       state.userDisplayName = user.email.split("@")[0];
+      state.isAuthenticated = true;
     },
   },
 });

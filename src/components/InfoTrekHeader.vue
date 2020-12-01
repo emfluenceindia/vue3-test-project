@@ -135,14 +135,6 @@ export default {
       type: String,
       required: false,
     },
-    isAuthenticated: {
-      type: Boolean,
-      required: true,
-    },
-    /*userDisplayName: {
-      type: String,
-      required: true,
-    },*/
   },
 
   data() {
@@ -226,6 +218,11 @@ export default {
         "</span>"
       );
     },
+
+    isAuthenticated: () => {
+      const store = useStore();
+      return store.state.isAuthenticated;
+    },
   },
 
   watch: {
@@ -265,7 +262,6 @@ export default {
 
   mounted() {
     this.toggleMobileMenu();
-    //this.isLoggedIn = false;
   },
 };
 </script>

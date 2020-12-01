@@ -3,7 +3,6 @@
     <InfoTrekHeader
       :brand="branding.title"
       :slogan="branding.catchLine"
-      :isAuthenticated="isUserLoggedIn"
       @openmodal="openAuthModal"
       @signout="logOut"
     />
@@ -36,13 +35,13 @@ export default {
   setup() {
     const showModal = ref(false);
     const modalLabel = ref("");
-    const isUserLoggedIn = ref(false);
-    const authUserEmail = ref("");
     const popupId = ref(0);
     const branding = ref({
       title: "Mountain Walkers",
       catchLine: "the best view awaits you at the top",
     });
+
+    const store = useStore();
 
     // functions
     const closePopup = () => {
@@ -56,16 +55,14 @@ export default {
       popupId.value = obj.currentPopupId;
     };
 
-    const updateHeader = (loginStatus) => {
-      isUserLoggedIn.value = loginStatus;
-    };
-
     const logOut = () => {
       firebase.default
         .auth()
         .signOut()
         .then(() => {
-          isUserLoggedIn.value = false;
+          store.state.currentUser = {};
+          store.state.userDisplayName = "";
+          store.state.isAuthenticated = false;
         })
         .catch((error) => {
           console.log(error);
@@ -80,16 +77,10 @@ export default {
       },
     });*/
 
-    const store = useStore();
-
     onMounted(() => {
       firebase.default.auth().onAuthStateChanged((user) => {
         if (user) {
           store.commit("storeUser", user);
-          updateHeader(true);
-        } else {
-          updateHeader(false);
-          // Do something. maybe open the login popup
         }
       });
     });
@@ -99,12 +90,8 @@ export default {
       showModal,
       modalLabel,
       popupId,
-      isUserLoggedIn,
-      authUserEmail,
-
       closePopup,
       openAuthModal,
-      updateHeader,
       logOut,
     };
   },
