@@ -1,84 +1,92 @@
 <template>
   <div>
-    <InfoTrekHeader 
+    <InfoTrekHeader
       :brand="branding.title"
-      :slogan="branding.catchLine" 
-      :isAuthenticated="isUserLoggedIn" 
+      :slogan="branding.catchLine"
+      :isAuthenticated="isUserLoggedIn"
       :userDisplayName="userDisplayName"
       @openmodal="openAuthModal"
-      @signout="logOut" 
+      @signout="logOut"
     />
     <div id="container">
       <router-view></router-view>
     </div>
-    <AuthPopup 
-      :showModal="showModal" 
-      :popupId="popupId" 
-      :popupLabel="modalLabel" 
-      @close-popup="closePopup" 
+    <AuthPopup
+      :showModal="showModal"
+      :popupId="popupId"
+      :popupLabel="modalLabel"
+      @close-popup="closePopup"
     />
   </div>
 </template>
 
 <script>
-import InfoTrekHeader from './components/InfoTrekHeader.vue';
-import AuthPopup from './components/AuthenticationModal.vue';
-import firebase from './utilities/firebase';
+import InfoTrekHeader from "./components/InfoTrekHeader.vue";
+import AuthPopup from "./components/AuthenticationModal.vue";
+import firebase from "./utilities/firebase";
 
-import { computed, onMounted, ref } from 'vue';
+import { computed, onMounted, ref } from "vue";
+import { useStore } from "vuex";
 
 export default {
-  name: 'App',
+  name: "App",
   //emits:[ 'openmodal', 'signout' ],
 
   // Start setup() method
   setup() {
     const showModal = ref(false);
-    const modalLabel = ref('');
+    const modalLabel = ref("");
     const isUserLoggedIn = ref(false);
-    const authUserEmail = ref('');
+    const authUserEmail = ref("");
     const popupId = ref(0);
     const branding = ref({
-      title: 'Mountain Walkers',
-      catchLine: 'the best view awaits you at the top',
+      title: "Mountain Walkers",
+      catchLine: "the best view awaits you at the top",
     });
 
     // functions
-    const closePopup = (()=>{
+    const closePopup = () => {
       showModal.value = false;
-    });
+    };
 
-    const openAuthModal = (( obj ) => {
+    const openAuthModal = (obj) => {
       console.log(obj);
       showModal.value = obj.modalState;
       modalLabel.value = obj.modalLabel;
       popupId.value = obj.currentPopupId;
-    });
+    };
 
-    const updateHeader = (loginStatus => {
+    const updateHeader = (loginStatus) => {
       isUserLoggedIn.value = loginStatus;
-    });
+    };
 
-    const logOut = ( () => {
-      firebase.default.auth().signOut()
-      .then( () => {
-        isUserLoggedIn.value = false;
-      } )
-      .catch( error => { console.log( error ); } );
-    });
+    const logOut = () => {
+      firebase.default
+        .auth()
+        .signOut()
+        .then(() => {
+          isUserLoggedIn.value = false;
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    };
 
     // Computed property (getter and setter)
     const userDisplayName = computed({
-      get: () => authUserEmail.value.split( '@' )[0],
-      set: val => {
+      get: () => authUserEmail.value.split("@")[0],
+      set: (val) => {
         authUserEmail.value = val;
-      }
+      },
     });
 
+    const store = useStore();
+
     onMounted(() => {
-      firebase.default.auth().onAuthStateChanged( user => {
-        if( user ) {
+      firebase.default.auth().onAuthStateChanged((user) => {
+        if (user) {
           userDisplayName.value = user.email;
+          store.commit("storeUser", user);
           updateHeader(true);
         } else {
           updateHeader(false);
@@ -94,14 +102,13 @@ export default {
       popupId,
       isUserLoggedIn,
       authUserEmail,
-      
+
       closePopup,
       openAuthModal,
       updateHeader,
       logOut,
       userDisplayName,
-    }
-
+    };
   },
   // Ends setup() method
 
@@ -109,7 +116,7 @@ export default {
     InfoTrekHeader,
     AuthPopup,
   },
-}
+};
 </script>
 
 <style>
@@ -117,7 +124,7 @@ body {
   margin: 0;
   padding: 0;
   width: 100%;
-  font-family: 'Lato', sans-serif;
+  font-family: "Lato", sans-serif;
 }
 #app {
   -webkit-font-smoothing: antialiased;
