@@ -45,25 +45,29 @@
       <a href="/">Precautions</a>
       <a href="/">Medicines</a>
     </div>
-    <div>
+    <div class="w-full p-2">
       <h3 v-if="place.info.itinerary.length > 0">Itinerary</h3>
       <div
-        class="item border border-gray-400 p-4 rounded-md my-2 shadow-md"
+        class="item p-4 rounded-md my-2 shadow-lg"
         v-for="day in place.info.itinerary"
         :key="day.label"
       >
         <div class="flex justify-start w-full">
           <span
-            class="bg-orange-700 text-white py-1 px-3 text-sm uppercase w-1/12"
+            class="bg-orange-700 text-white py-1 px-3 text-sm uppercase max-w-xs rounded-md rounded-r-none"
             >{{ day.label }}</span
           >
           <span
-            class="bg-gradient-to-r from-gray-800 to-white text-white py-1 px-3 capitalize text-sm w-11/12"
+            class="bg-gradient-to-r from-gray-800 to-white text-white py-1 px-3 uppercase text-sm w-11/12"
           >
-            {{ day.from }} - {{ day.to }}
+            {{ day.from }}
+            <i class="text-yellow-400 fa fa-arrow-circle-right mx-1"></i>
+            {{ day.to }}
           </span>
         </div>
-        <br />{{ day.description }}
+        <div class="my-2">
+          {{ day.description }}
+        </div>
       </div>
     </div>
     <div class="comments">
