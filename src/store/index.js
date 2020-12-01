@@ -5,11 +5,13 @@ const store = createStore({
     return {
       count: 1,
       currentUser: {},
+      userDisplayName: "",
     };
   },
   mutations: {
     storeUser(state, user) {
       state.currentUser = user;
+      state.userDisplayName = user.email.split("@")[0];
     },
   },
 });

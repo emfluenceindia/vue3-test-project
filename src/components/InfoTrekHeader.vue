@@ -35,12 +35,7 @@
       <div class="mr-6 mt-3 text-white">
         <div v-if="isAuthenticated">
           <i class="fa fa-user-circle mr-1"></i>
-          <span class="text-sm">
-            Logged in as
-            <span class="text-yellow-500 ml-1 uppercase">{{
-              userDisplayName
-            }}</span>
-          </span>
+          <span class="text-sm" v-html="userDisplayName"></span>
           <a
             class="uppercase text-white text-xs bg-gradient-to-t from-red-600 to-red-800 px-3 hover:shadow-lg py-1 ml-2 rounded shadow-md"
             @click.prevent="signOut"
@@ -127,6 +122,8 @@
 </template>
 
 <script>
+import { useStore } from "vuex";
+
 export default {
   name: "InfoTrekHeader",
   props: {
@@ -142,10 +139,10 @@ export default {
       type: Boolean,
       required: true,
     },
-    userDisplayName: {
+    /*userDisplayName: {
       type: String,
       required: true,
-    },
+    },*/
   },
 
   data() {
@@ -218,6 +215,17 @@ export default {
         isAdmin: true,
       },
     };
+  },
+
+  computed: {
+    userDisplayName: () => {
+      const store = useStore();
+      return (
+        'Logged in as<span class="text-yellow-500 ml-1 uppercase">' +
+        store.state.userDisplayName +
+        "</span>"
+      );
+    },
   },
 
   watch: {

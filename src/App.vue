@@ -4,7 +4,6 @@
       :brand="branding.title"
       :slogan="branding.catchLine"
       :isAuthenticated="isUserLoggedIn"
-      :userDisplayName="userDisplayName"
       @openmodal="openAuthModal"
       @signout="logOut"
     />
@@ -25,7 +24,8 @@ import InfoTrekHeader from "./components/InfoTrekHeader.vue";
 import AuthPopup from "./components/AuthenticationModal.vue";
 import firebase from "./utilities/firebase";
 
-import { computed, onMounted, ref } from "vue";
+//import { computed, onMounted, ref } from "vue";
+import { onMounted, ref } from "vue";
 import { useStore } from "vuex";
 
 export default {
@@ -73,19 +73,18 @@ export default {
     };
 
     // Computed property (getter and setter)
-    const userDisplayName = computed({
+    /*const userDisplayName = computed({
       get: () => authUserEmail.value.split("@")[0],
       set: (val) => {
         authUserEmail.value = val;
       },
-    });
+    });*/
 
     const store = useStore();
 
     onMounted(() => {
       firebase.default.auth().onAuthStateChanged((user) => {
         if (user) {
-          userDisplayName.value = user.email;
           store.commit("storeUser", user);
           updateHeader(true);
         } else {
@@ -107,7 +106,6 @@ export default {
       openAuthModal,
       updateHeader,
       logOut,
-      userDisplayName,
     };
   },
   // Ends setup() method
