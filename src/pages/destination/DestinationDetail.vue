@@ -162,17 +162,10 @@ export default {
   beforeCreated() {},
   created() {},
   beforeMount() {},
-  mounted() {
-    // const store = useStore();
-    // console.log(store);
-  },
+  mounted() {},
   beforeUpdate() {},
   updated() {},
-  beforeUnmount() {
-    /*if( this.place ) {
-            alert('You are navigating away from ' + this.place.name);
-        }*/
-  },
+  beforeUnmount() {},
   unmounted() {},
 };
 </script>
