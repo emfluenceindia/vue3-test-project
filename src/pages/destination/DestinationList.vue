@@ -15,7 +15,7 @@
     </div>
     <DestinationDetail :place="selectedPlace" />
   </div>
-  <InfoModal :modalId="1" :showInfoModal="false" :modalTitle="Itinerary" />
+  <InfoModal :modalId="1" :modalTitle="Itinerary" />
 </template>
 
 <script>

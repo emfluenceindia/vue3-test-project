@@ -29,7 +29,7 @@ export default {
     showInfoModal: {
       type: Boolean,
       required: true,
-      default: true,
+      default: false,
     },
     modalId: {
       type: Number,

@@ -39,7 +39,7 @@
       <a
         class="bg-gradient-to-b from-orange-500 to-orange-800 hover:to-orange-900"
         href="/"
-        @click.prevent="showInfoModal('itinerary', place.info.itinerary)"
+        @click.prevent="showInfoModal(true)"
         >Itinerary</a
       >
       <a
@@ -110,7 +110,21 @@
 </template>
 
 <script>
+import { useStore } from "vuex";
+
 export default {
+  setup() {
+    const store = useStore();
+    const showInfoModal = (value) => {
+      store.commit("setInfoModalVisibility", value);
+      console.log(store.state);
+    };
+
+    return {
+      showInfoModal,
+    };
+  },
+
   name: "DestinationDetail",
   props: {
     id: {
@@ -128,16 +142,31 @@ export default {
             required: true
         }*/
   },
+  computed: {
+    /*showInfoModal: (value) => {
+      const store = useStore();
+      console.log(store, value);
+    },*/
+  },
   methods: {
-    showInfoModal: (label, obj) => {
+    /*showInfoModal: (label, obj) => {
       console.log(label, obj);
-    },
+    },*/
+    // showInfoModal(value) {
+    //   const store = useStore();
+    //   console.log(store, value);
+    //   store.commit("setInfoModalVisibility", value);
+    //   console.log(store.state);
+    // },
   },
 
   beforeCreated() {},
   created() {},
   beforeMount() {},
-  mounted() {},
+  mounted() {
+    // const store = useStore();
+    // console.log(store);
+  },
   beforeUpdate() {},
   updated() {},
   beforeUnmount() {

@@ -6,6 +6,7 @@ const store = createStore({
       currentUser: {},
       userDisplayName: "",
       isAuthenticated: false,
+      infoModalVisible: false,
     };
   },
   mutations: {
@@ -13,6 +14,10 @@ const store = createStore({
       state.currentUser = user;
       state.userDisplayName = user.email.split("@")[0];
       state.isAuthenticated = true;
+    },
+
+    setInfoModalVisibility(state, payload) {
+      state.infoModalVisible = payload;
     },
   },
 });
