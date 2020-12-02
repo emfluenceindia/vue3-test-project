@@ -1,7 +1,5 @@
 <template>
   <div v-if="place.id !== 0" class="place-dtl">
-    <!-- <div v-if="loadingIcon === false">Loading...</div>
-        <div v-else>Loaded</div> -->
     <h3>{{ place.name }}</h3>
     <div class="photo">
       <img :src="place.image" :alt="place.name" />
@@ -104,28 +102,9 @@ export default {
       type: Object,
       required: true,
     },
-    /*loadingIcon: {
-            type: Boolean,
-            required: true
-        }*/
   },
-  computed: {
-    /*showInfoModal: (value) => {
-      const store = useStore();
-      console.log(store, value);
-    },*/
-  },
-  methods: {
-    /*showInfoModal: (label, obj) => {
-      console.log(label, obj);
-    },*/
-    // showInfoModal(value) {
-    //   const store = useStore();
-    //   console.log(store, value);
-    //   store.commit("setInfoModalVisibility", value);
-    //   console.log(store.state);
-    // },
-  },
+  computed: {},
+  methods: {},
 
   beforeCreated() {},
   created() {},
