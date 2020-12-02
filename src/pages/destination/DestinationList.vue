@@ -15,6 +15,7 @@
     </div>
     <DestinationDetail :place="selectedPlace" />
   </div>
+  <InfoModal :modalId="1" :showInfoModal="false" :modalTitle="Itinerary" />
 </template>
 
 <script>
@@ -23,6 +24,7 @@
  */
 import { ref } from "vue";
 import DestinationDetail from "./DestinationDetail.vue";
+import InfoModal from "../../components/InfoModal.vue";
 
 export default {
   /**
@@ -340,6 +342,7 @@ export default {
   name: "DestinationList",
   components: {
     DestinationDetail,
+    InfoModal,
   },
   props: {
     heading: {
