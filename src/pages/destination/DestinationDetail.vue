@@ -37,13 +37,26 @@
     </div>
     <div class="action-panel">
       <a
+        class="bg-gradient-to-b from-orange-500 to-orange-800 hover:to-orange-900"
         href="/"
         @click.prevent="showInfoModal('itinerary', place.info.itinerary)"
         >Itinerary</a
       >
-      <a href="/">Preparation</a>
-      <a href="/">Precautions</a>
-      <a href="/">Medicines</a>
+      <a
+        class="bg-gradient-to-b from-orange-500 to-orange-800 hover:to-orange-900"
+        href="/"
+        >Preparation</a
+      >
+      <a
+        class="bg-gradient-to-b from-orange-500 to-orange-800 hover:to-orange-900"
+        href="/"
+        >Precautions</a
+      >
+      <a
+        class="bg-gradient-to-b from-orange-500 to-orange-800 hover:to-orange-900"
+        href="/"
+        >Medicines</a
+      >
     </div>
     <div class="w-full p-2">
       <h3 v-if="place.info.itinerary.length > 0">Itinerary</h3>
@@ -54,18 +67,34 @@
       >
         <div class="flex justify-start w-full">
           <span
-            class="bg-orange-700 text-white py-1 px-3 text-sm uppercase max-w-xs rounded-md rounded-r-none"
+            class="bg-orange-700 text-white py-1 px-3 text-sm uppercase max-w-sm rounded-md rounded-r-none"
             >{{ day.label }}</span
           >
           <span
-            class="bg-gradient-to-r from-gray-800 to-white text-white py-1 px-3 uppercase text-sm w-11/12"
+            class="bg-blue-800 text-white py-1 px-3 uppercase text-sm w-8/12"
           >
             {{ day.from }}
             <i class="text-yellow-400 fa fa-arrow-circle-right mx-1"></i>
             {{ day.to }}
           </span>
+          <div
+            class="text-right text-sm font-sans font-semibold w-3/12 bg-blue-700 text-white rounded-md rounded-l-none capitalize pt-1 px-1"
+          >
+            <span
+              class="mr-1 bg-white px-1 text-blue-900 rounded"
+              v-if="day.altitude !== ''"
+              >{{ day.altitude }}</span
+            >
+            <span class="mr-1 bg-white px-1 text-blue-900 rounded">{{
+              day.distance
+            }}</span>
+            <span class="mr-1 bg-white px-1 text-blue-900 rounded">{{
+              day.transport
+            }}</span>
+          </div>
         </div>
-        <div class="my-2">
+
+        <div class="my-2 text-sm">
           {{ day.description }}
         </div>
       </div>
@@ -198,16 +227,16 @@ export default {
 
 .place-dtl .action-panel a {
   flex-grow: 1;
-  background: chocolate;
   color: white;
   text-decoration: none;
-  font-size: 12px;
+  font-size: 13px;
   padding: 0.6rem 0 0.6rem 0;
   margin: 0 0.2rem;
   border-radius: 0.3rem;
   box-sizing: border-box;
   text-transform: uppercase;
   font-weight: normal;
+  letter-spacing: 0.04rem;
 }
 
 .place-dtl .comments {
