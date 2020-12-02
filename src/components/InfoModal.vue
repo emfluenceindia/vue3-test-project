@@ -1,5 +1,5 @@
 <template>
-  <section v-if="showInfoModal">
+  <section v-if="modalVisible">
     <section
       class="z-20 w-screen h-screen bg-gray-400 fixed top-0 opacity-75"
       @click="closePopup"
@@ -23,14 +23,21 @@
 </template>
 
 <script>
+import { useStore } from "vuex";
+
 export default {
+  setup() {
+    const store = useStore();
+    const closePopup = () => {
+      store.commit("setInfoModalVisibility", false);
+    };
+
+    return {
+      closePopup,
+    };
+  },
   name: "InfoModal",
   props: {
-    showInfoModal: {
-      type: Boolean,
-      required: true,
-      default: false,
-    },
     modalId: {
       type: Number,
       required: true,
@@ -48,9 +55,10 @@ export default {
     return {};
   },
 
-  methods: {
-    closePopup() {
-      console.log("Closing...");
+  computed: {
+    modalVisible() {
+      const store = useStore();
+      return store.state.infoModalVisible;
     },
   },
 };
