@@ -6,7 +6,11 @@ const store = createStore({
       currentUser: {},
       userDisplayName: "",
       isAuthenticated: false,
+
       infoModalVisible: false,
+      infoModalContent: {},
+      infoModalContentType: "",
+      infoModalContentTitle: "",
     };
   },
   mutations: {
@@ -18,6 +22,12 @@ const store = createStore({
 
     setInfoModalVisibility(state, payload) {
       state.infoModalVisible = payload;
+    },
+
+    setInfoModalContent(state, payload) {
+      state.infoModalContent = payload.content;
+      state.infoModalContentType = payload.type;
+      state.infoModalContentTitle = payload.title;
     },
   },
 });

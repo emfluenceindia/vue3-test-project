@@ -39,7 +39,9 @@
       <a
         class="bg-gradient-to-b from-orange-500 to-orange-800 hover:to-orange-900"
         href="/"
-        @click.prevent="showInfoModal()"
+        @click.prevent="
+          showInfoModal(place.info.itinerary, 'itinerary', 'trip itinerary')
+        "
         >Itinerary</a
       >
       <a
@@ -115,8 +117,14 @@ import { useStore } from "vuex";
 export default {
   setup() {
     const store = useStore();
-    const showInfoModal = () => {
+    const showInfoModal = (content, contentType, contentTitle) => {
       store.commit("setInfoModalVisibility", true);
+      store.commit("setInfoModalContent", {
+        content: content,
+        type: contentType,
+        title: contentTitle,
+      });
+      console.log(store.state);
     };
 
     return {
