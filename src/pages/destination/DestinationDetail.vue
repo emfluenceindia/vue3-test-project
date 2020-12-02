@@ -60,47 +60,7 @@
         >Medicines</a
       >
     </div>
-    <div class="w-full p-2">
-      <h3 v-if="place.info.itinerary.length > 0">Itinerary</h3>
-      <div
-        class="item p-4 rounded-md my-2 shadow-lg"
-        v-for="day in place.info.itinerary"
-        :key="day.label"
-      >
-        <div class="flex justify-start w-full">
-          <span
-            class="bg-orange-700 text-white py-1 px-3 text-sm uppercase max-w-sm rounded-md rounded-r-none"
-            >{{ day.label }}</span
-          >
-          <span
-            class="bg-blue-800 text-white py-1 px-3 uppercase text-sm w-8/12"
-          >
-            {{ day.from }}
-            <i class="text-yellow-400 fa fa-arrow-circle-right mx-1"></i>
-            {{ day.to }}
-          </span>
-          <div
-            class="text-right text-sm font-sans font-semibold w-3/12 bg-blue-700 text-white rounded-md rounded-l-none capitalize pt-1 px-1"
-          >
-            <span
-              class="mr-1 bg-white px-1 text-blue-900 rounded"
-              v-if="day.altitude !== ''"
-              >{{ day.altitude }}</span
-            >
-            <span class="mr-1 bg-white px-1 text-blue-900 rounded">{{
-              day.distance
-            }}</span>
-            <span class="mr-1 bg-white px-1 text-blue-900 rounded">{{
-              day.transport
-            }}</span>
-          </div>
-        </div>
 
-        <div class="my-2 text-sm">
-          {{ day.description }}
-        </div>
-      </div>
-    </div>
     <div class="comments">
       <h3 v-if="place.comments.length > 0">Recent Comments</h3>
       <div v-for="comment in place.comments" :key="comment.id" class="comment">
