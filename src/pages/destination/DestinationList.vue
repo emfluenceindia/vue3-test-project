@@ -8,6 +8,7 @@
             @click.prevent="getPlace(place)"
             :title="place.name"
             :href="place.url"
+            ><i class="fas fa-tree text-green-800 text-sm mr-1 p-1 rounded"></i
             >{{ place.name }}<span>({{ place.location }})</span></a
           >
         </li>
@@ -415,13 +416,6 @@ export default {
   font-size: 0.9rem;
   color: gray;
   padding: 0.2rem 0;
-}
-
-.places ul li:before {
-  font-family: "FontAwesome";
-  content: "\f1bb";
-  color: gray;
-  padding-right: 0.25rem;
 }
 
 .places ul li a {
