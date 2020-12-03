@@ -45,17 +45,27 @@
       <a
         class="bg-gradient-to-b from-orange-500 to-orange-800 hover:to-orange-900"
         href="/"
-        >Preparation</a
+        @click.prevent="
+          showInfoModal(place.info.itinerary, 'preparation', 'preapration')
+        "
+        >Things to Carry</a
       >
+
       <a
         class="bg-gradient-to-b from-orange-500 to-orange-800 hover:to-orange-900"
         href="/"
-        >Precautions</a
-      >
-      <a
-        class="bg-gradient-to-b from-orange-500 to-orange-800 hover:to-orange-900"
-        href="/"
+        @click.prevent="
+          showInfoModal(place.info.itinerary, 'medicine', 'medicines')
+        "
         >Medicines</a
+      >
+      <a
+        class="bg-gradient-to-b from-orange-500 to-orange-800 hover:to-orange-900"
+        href="/"
+        @click.prevent="
+          showInfoModal(place.info.itinerary, 'dosdont', 'dos and donts')
+        "
+        >DOS and DONTS</a
       >
     </div>
 

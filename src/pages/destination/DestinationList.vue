@@ -133,7 +133,38 @@ export default {
           ],
           preparation: "",
           precaution: "",
-          medicine: "",
+          medicine: [
+            {
+              id: 1,
+              name: "Diamox",
+              purpose: "Accute Mountain Sickness",
+            },
+            {
+              id: 2,
+              name: "Aceclofenac",
+              purpose: "Muscular Pain",
+            },
+            {
+              id: 3,
+              name: "Avomin",
+              purpose: "Vomitting",
+            },
+            {
+              id: 4,
+              name: "Norflox TZ",
+              purpose: "Diaorreah",
+            },
+            {
+              id: 5,
+              name: "Combiflam",
+              purpose: "General Pain",
+            },
+            {
+              id: 5,
+              name: "Cetrizine",
+              purpose: "Anti Alergic",
+            },
+          ],
         },
         comments: [
           {
