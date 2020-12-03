@@ -5,7 +5,7 @@
       <i
         class="fas fa-heart mx-2 cursor-pointer"
         :class="favIconClass"
-        @click="addToFav(place.id)"
+        @click="addToFav(place)"
       ></i>
     </h3>
     <div class="photo">
@@ -116,9 +116,15 @@ export default {
 
     const isFavorite = ref(false);
 
-    const addToFav = (place_id) => {
+    const addToFav = (place) => {
       isFavorite.value = !isFavorite.value;
-      console.log(place_id, isFavorite.value);
+      const objFav = {
+        id: Math.random(),
+        place_id: place.id,
+        place_name: place.name,
+        email: store.state.currentUser.email,
+      };
+      store.commit("updateFavList", objFav);
     };
 
     const favIconClass = computed({

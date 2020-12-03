@@ -11,6 +11,8 @@ const store = createStore({
       infoModalContent: {},
       infoModalContentType: "",
       infoModalContentTitle: "",
+
+      favList: {},
     };
   },
   mutations: {
@@ -28,6 +30,10 @@ const store = createStore({
       state.infoModalContent = payload.content;
       state.infoModalContentType = payload.type;
       state.infoModalContentTitle = payload.title;
+    },
+
+    updateFavList(state, payload) {
+      state.favList = payload;
     },
   },
 });
