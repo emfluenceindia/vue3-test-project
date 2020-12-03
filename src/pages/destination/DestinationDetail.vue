@@ -1,6 +1,13 @@
 <template>
   <div v-if="place.id !== 0" class="place-dtl">
-    <h3>{{ place.name }}</h3>
+    <h3>
+      {{ place.name }}
+      <i
+        class="fas fa-heart mx-2 cursor-pointer"
+        :class="favIconClass"
+        @click="addToFav(place.id)"
+      ></i>
+    </h3>
     <div class="photo">
       <img :src="place.image" :alt="place.name" />
     </div>
@@ -92,6 +99,7 @@
 
 <script>
 import { useStore } from "vuex";
+import { computed, ref } from "vue";
 
 export default {
   setup() {
@@ -106,12 +114,34 @@ export default {
       //console.log(store.state);
     };
 
+    const isFavorite = ref(false);
+
+    const addToFav = (place_id) => {
+      isFavorite.value = !isFavorite.value;
+      console.log(place_id, isFavorite.value);
+    };
+
+    const favIconClass = computed({
+      get: () => (!isFavorite.value ? "text-gray-400" : "text-pink-700"),
+      set: (val) => {
+        isFavorite.value = val;
+      },
+    });
+
     return {
       showInfoModal,
+      isFavorite,
+      addToFav,
+      favIconClass,
     };
   },
 
   name: "DestinationDetail",
+  data() {
+    return {
+      //isFavorite = false
+    };
+  },
   props: {
     id: {
       type: String,
