@@ -46,7 +46,7 @@
         class="bg-gradient-to-b from-orange-500 to-orange-800 hover:to-orange-900"
         href="/"
         @click.prevent="
-          showInfoModal(place.info.itinerary, 'preparation', 'preapration')
+          showInfoModal(place.info.itinerary, 'things', 'things to carry')
         "
         >Things to Carry</a
       >
@@ -80,6 +80,12 @@
         >
         <p>{{ comment.content }}</p>
       </div>
+    </div>
+    <div class="w-full text-center">
+      <a
+        class="bg-gradient-to-b from-green-600 to-green-800 p-2 my-1 border rounded-md text-white text-sm shadow-md uppercase"
+        >Add A Comment</a
+      >
     </div>
   </div>
 </template>

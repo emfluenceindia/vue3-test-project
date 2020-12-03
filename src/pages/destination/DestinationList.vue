@@ -138,17 +138,21 @@ export default {
               id: 1,
               label: "Diamox",
               description: "Accute Mountain Sickness (AMS)",
+              info:
+                "Acetazolamide is used to prevent and reduce the symptoms of altitude sickness. This medication can decrease headache, tiredness, nausea, dizziness, and shortness of breath that can occur when you climb quickly to high altitudes",
             },
             {
               id: 2,
-              label: "Aceclofenac",
-              description: "Muscular Pain",
+              label: "Aceclofenac (Hifenac / Acenac)",
+              description: "Pain Reliever / Pain Killer",
+              info:
+                "Aceclofenac tablets are used for the relief of muscle pain, inflammation in osteoarthritis, sudden sprain, rheumatoid arthritis and ankylosing spondylitis. Try to use this medicine at higher altitude only in absolute necessity",
             },
             {
               id: 3,
               label: "Vomistop",
               description: "Anti vomit medicine",
-              attention:
+              info:
                 "Use only when most required at high altitude. Check acidity. This is also a symptom of AMS. Take immediate and necessary action in such cases.",
             },
             {
@@ -168,7 +172,7 @@ export default {
             },
             {
               id: 7,
-              label: "Crocin or Dolo 650",
+              label: "Crocin / Dolo 650",
               description: "Fever / High Fever",
             },
             {
@@ -180,21 +184,21 @@ export default {
               id: 8,
               label: "Cough Syrup",
               description: "Mild Cough",
-              attention:
+              info:
                 "Cough could also be a symptom of Accute Mountain Sickness. If cough syrup does not work, take immediate action",
             },
             {
               id: 9,
               label: "Disprin",
               description: "Headache or Mild throat pain",
-              attention:
+              info:
                 "Try not to use at high altitude. instead drink more water and rest. Headache is also a symptom of AMS, Do Not Suppress.",
             },
             {
               id: 10,
               label: "Avomine",
               description: "Used against motion sickness or nausea",
-              attention:
+              info:
                 "Try not to use at high altitude. This is also a symptom of AMS, Do Not Suppress.",
             },
             {
@@ -206,7 +210,7 @@ export default {
               id: 12,
               label: "Azithromycin",
               description: "Stops and cures infection from spreading",
-              attention:
+              info:
                 "Do not take antibiotics when at high altitude. Descend if problem persists",
             },
           ],
@@ -240,28 +244,6 @@ export default {
               id: 4,
               firstName: "Jaya",
               lastName: "Sarkar",
-            },
-            date: "2020-08-11",
-            content:
-              "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero. Sed cursus ante dapibus diam. Sed nisi. Nulla quis sem at nibh elementum imperdiet. Duis sagittis ipsum. Praesent mauris. Fusce nec tellus sed augue semper porta. Mauris massa. Vestibulum lacinia arcu eget nulla. Class aptent taciti sociosq.",
-          },
-          {
-            id: 4,
-            user: {
-              id: 21,
-              firstName: "Srijoni",
-              lastName: "Sarkar",
-            },
-            date: "2020-08-11",
-            content:
-              "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero. Sed cursus ante dapibus diam. Sed nisi. Nulla quis sem at nibh elementum imperdiet. Duis sagittis ipsum. Praesent mauris. Fusce nec tellus sed augue semper porta. Mauris massa. Vestibulum lacinia arcu eget nulla. Class aptent taciti sociosq.",
-          },
-          {
-            id: 5,
-            user: {
-              id: 786,
-              firstName: "Shail Bala",
-              lastName: "Tripathy",
             },
             date: "2020-08-11",
             content:
