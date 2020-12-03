@@ -99,6 +99,7 @@
 
 <script>
 import { useStore } from "vuex";
+//import { computed, onMounted, ref } from "vue";
 import { computed, ref } from "vue";
 
 export default {
@@ -115,6 +116,22 @@ export default {
     };
 
     const isFavorite = ref(false);
+
+    /*
+    const isMyFavorite = (place) => {
+      const favList = store.state.favList;
+      const favItem = favList.find(
+        (f) =>
+          f.place_id === place.id && f.email === store.state.currentUser.email
+      );
+
+      console.log(favItem);
+    };
+
+    onMounted(() => {
+      isMyFavorite();
+    });
+    */
 
     const addToFav = (place) => {
       isFavorite.value = !isFavorite.value;
@@ -139,6 +156,7 @@ export default {
       isFavorite,
       addToFav,
       favIconClass,
+      //isMyFavorite,
     };
   },
 
