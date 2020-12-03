@@ -16,7 +16,7 @@
     </div>
     <DestinationDetail :place="selectedPlace" />
   </div>
-  <InfoModal :modalId="1" :modalTitle="Itinerary" />
+  <InfoModal />
 </template>
 
 <script>
@@ -136,33 +136,33 @@ export default {
           medicine: [
             {
               id: 1,
-              name: "Diamox",
-              purpose: "Accute Mountain Sickness",
+              label: "Diamox",
+              description: "Accute Mountain Sickness (AMS)",
             },
             {
               id: 2,
-              name: "Aceclofenac",
-              purpose: "Muscular Pain",
+              label: "Aceclofenac",
+              description: "Muscular Pain",
             },
             {
               id: 3,
-              name: "Avomin",
-              purpose: "Vomitting",
+              label: "Avomin",
+              description: "Vomitting",
             },
             {
               id: 4,
-              name: "Norflox TZ",
-              purpose: "Diaorreah",
+              label: "Norflox TZ",
+              description: "Diaorreah",
             },
             {
               id: 5,
-              name: "Combiflam",
-              purpose: "General Pain",
+              label: "Combiflam",
+              description: "General Pain",
             },
             {
               id: 5,
-              name: "Cetrizine",
-              purpose: "Anti Alergic",
+              label: "Cetrizine",
+              description: "Anti Alergic",
             },
           ],
         },

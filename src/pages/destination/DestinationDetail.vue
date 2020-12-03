@@ -55,7 +55,7 @@
         class="bg-gradient-to-b from-orange-500 to-orange-800 hover:to-orange-900"
         href="/"
         @click.prevent="
-          showInfoModal(place.info.itinerary, 'medicine', 'medicines')
+          showInfoModal(place.info.medicine, 'medicine', 'medicines')
         "
         >Medicines</a
       >

@@ -19,50 +19,7 @@
                 {{ modalTitle }}
               </legend>
               <div v-if="contentType === 'itinerary'">
-                <div class="w-full p-2">
-                  <div
-                    class="item p-4 rounded-md my-1 shadow-md"
-                    v-for="day in modalContent"
-                    :key="day.label"
-                  >
-                    <div class="flex justify-start w-full">
-                      <span
-                        class="bg-orange-700 text-white py-1 px-3 text-xs uppercase max-w-sm rounded-md rounded-r-none"
-                        >{{ day.label }}</span
-                      >
-                      <span
-                        class="bg-blue-800 text-white py-1 px-3 uppercase text-xs w-8/12 text-left"
-                      >
-                        {{ day.from }}
-                        <i
-                          class="text-yellow-400 fa fa-arrow-circle-right mx-1"
-                        ></i>
-                        {{ day.to }}
-                      </span>
-                      <div
-                        class="text-right text-xs font-sans font-semibold w-3/12 bg-blue-700 text-white rounded-md rounded-l-none capitalize pt-1 px-1"
-                      >
-                        <span
-                          class="mr-1 bg-white px-1 text-blue-900 rounded"
-                          v-if="day.altitude !== ''"
-                          >{{ day.altitude }}</span
-                        >
-                        <span
-                          class="mr-1 bg-white px-1 text-blue-900 rounded"
-                          >{{ day.distance }}</span
-                        >
-                        <span
-                          class="mr-1 bg-white px-1 text-blue-900 rounded"
-                          >{{ day.transport }}</span
-                        >
-                      </div>
-                    </div>
-
-                    <div class="my-2 text-sm text-left">
-                      {{ day.description }}
-                    </div>
-                  </div>
-                </div>
+                <Itinerary :items="modalContent" />
               </div>
               <!-- // Itinerary -->
             </fieldset>
@@ -76,6 +33,7 @@
 <script>
 //import { useSSRContext } from "vue";
 import { useStore } from "vuex";
+import Itinerary from "./info/Itinerary.vue";
 
 export default {
   setup() {
@@ -89,23 +47,15 @@ export default {
     };
   },
   name: "InfoModal",
-  props: {
-    modalId: {
-      type: Number,
-      required: true,
-    },
-    // modalTitle: {
-    //   type: String,
-    //   required: true,
-    // },
-    // modalContent: {
-    //   type: Object,
-    //   required: true,
-    // },
+  components: {
+    Itinerary,
   },
+  props: {},
   data() {
     return {};
   },
+
+  methods: {},
 
   computed: {
     modalVisible() {
