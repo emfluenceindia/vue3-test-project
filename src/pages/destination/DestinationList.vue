@@ -146,8 +146,10 @@ export default {
             },
             {
               id: 3,
-              label: "Avomin",
-              description: "Vomitting",
+              label: "Vomistop",
+              description: "Anti vomit medicine",
+              attention:
+                "Use only when most required at high altitude. Check acidity. This is also a symptom of AMS. Take immediate and necessary action in such cases.",
             },
             {
               id: 4,
@@ -157,12 +159,55 @@ export default {
             {
               id: 5,
               label: "Combiflam",
-              description: "General Pain",
+              description: "Fever / Muscle or Bone Pain",
             },
             {
-              id: 5,
-              label: "Cetrizine",
+              id: 6,
+              label: "Cetrizine / Alegra",
               description: "Anti Alergic",
+            },
+            {
+              id: 7,
+              label: "Crocin or Dolo 650",
+              description: "Fever / High Fever",
+            },
+            {
+              id: 8,
+              label: "Zintac / Aciloc / Rantac / Omez",
+              description: "Indigestion or Acidity",
+            },
+            {
+              id: 8,
+              label: "Cough Syrup",
+              description: "Mild Cough",
+              attention:
+                "Cough could also be a symptom of Accute Mountain Sickness. If cough syrup does not work, take immediate action",
+            },
+            {
+              id: 9,
+              label: "Disprin",
+              description: "Headache or Mild throat pain",
+              attention:
+                "Try not to use at high altitude. instead drink more water and rest. Headache is also a symptom of AMS, Do Not Suppress.",
+            },
+            {
+              id: 10,
+              label: "Avomine",
+              description: "Used against motion sickness or nausea",
+              attention:
+                "Try not to use at high altitude. This is also a symptom of AMS, Do Not Suppress.",
+            },
+            {
+              id: 11,
+              label: "Spasmonil",
+              description: "Used for Abdominal cramps",
+            },
+            {
+              id: 12,
+              label: "Azithromycin",
+              description: "Stops and cures infection from spreading",
+              attention:
+                "Do not take antibiotics when at high altitude. Descend if problem persists",
             },
           ],
         },
