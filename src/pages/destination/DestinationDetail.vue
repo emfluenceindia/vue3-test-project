@@ -55,7 +55,7 @@
         class="bg-gradient-to-b from-orange-500 to-orange-800 hover:to-orange-900"
         href="/"
         @click.prevent="
-          showInfoModal(place.info.medicine, 'medicine', 'medicines')
+          showInfoModal(place.info.medicine, 'medicine', 'essential medicines')
         "
         >Medicines</a
       >
@@ -97,7 +97,7 @@ export default {
         type: contentType,
         title: contentTitle,
       });
-      console.log(store.state);
+      //console.log(store.state);
     };
 
     return {

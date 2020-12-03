@@ -21,6 +21,9 @@
               <div v-if="contentType === 'itinerary'">
                 <Itinerary :items="modalContent" />
               </div>
+              <div v-else-if="contentType === 'medicine'">
+                <Medicine :items="modalContent" />
+              </div>
               <!-- // Itinerary -->
             </fieldset>
           </div>
@@ -34,6 +37,7 @@
 //import { useSSRContext } from "vue";
 import { useStore } from "vuex";
 import Itinerary from "./info/Itinerary.vue";
+import Medicine from "./info/Medicine.vue";
 
 export default {
   setup() {
@@ -49,6 +53,7 @@ export default {
   name: "InfoModal",
   components: {
     Itinerary,
+    Medicine,
   },
   props: {},
   data() {
